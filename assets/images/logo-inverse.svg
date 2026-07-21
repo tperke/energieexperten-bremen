@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="238" height="50" viewBox="0 0 238 50" role="img" aria-labelledby="title">
+  <title id="title">Energieexperten Bremen</title>
+  <g fill="none" fill-rule="evenodd">
+    <path fill="#70b58f" d="M4 23.5 25 6l21 17.5v21a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/>
+    <path fill="#123247" d="M13 24.5 25 15l12 9.5V39h-8v-9h-8v9h-8z"/>
+    <path fill="#b9dfc8" d="M31 3c8 2 13 8 14 16-8 0-14-5-14-16Z"/>
+    <text x="58" y="25" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700">ENERGIEEXPERTEN</text>
+    <text x="58" y="42" fill="#92c7a8" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" letter-spacing="2.7">BREMEN</text>
+  </g>
+</svg>
+

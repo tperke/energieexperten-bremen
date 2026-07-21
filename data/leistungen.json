@@ -1,0 +1,45 @@
+[
+  {
+    "slug": "energieberatung",
+    "name": "Energieberatung",
+    "summary": "Gebäudezustand, Verbrauch und Ziele gemeinsam betrachten und nächste Schritte fundiert auswählen.",
+    "url": "energieberatung-bremen/",
+    "icon": "⌂"
+  },
+  {
+    "slug": "sanierungsfahrplan",
+    "name": "Sanierungsfahrplan",
+    "summary": "Mehrere Maßnahmen in eine technisch sinnvolle und langfristig nutzbare Reihenfolge bringen.",
+    "url": "sanierungsfahrplan-bremen/",
+    "icon": "≡"
+  },
+  {
+    "slug": "energieausweis",
+    "name": "Energieausweis",
+    "summary": "Bedarfs oder Verbrauchsausweis passend zu Gebäude und gesetzlichem Anlass erstellen lassen.",
+    "url": "energieausweis-bremen/",
+    "icon": "▤"
+  },
+  {
+    "slug": "foerdermittel",
+    "name": "Fördermittelberatung",
+    "summary": "Programme, Voraussetzungen und Antragsschritte vor einer verbindlichen Beauftragung klären.",
+    "url": "foerdermittelberatung-bremen/",
+    "icon": "€"
+  },
+  {
+    "slug": "baubegleitung",
+    "name": "Fachplanung und Baubegleitung",
+    "summary": "Energetische Ziele in klare Vorgaben übersetzen und wichtige Ausführungsschritte prüfen.",
+    "url": "baubegleitung-bremen/",
+    "icon": "◇"
+  },
+  {
+    "slug": "nichtwohngebaeude",
+    "name": "Nichtwohngebäude",
+    "summary": "Nutzung, Gebäudehülle und technische Anlagen von Unternehmen und größeren Gebäuden bewerten.",
+    "url": "nichtwohngebaeude-bremen/",
+    "icon": "▦"
+  }
+]
+

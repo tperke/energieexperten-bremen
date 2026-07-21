@@ -1,0 +1,69 @@
+Options -Indexes
+DirectoryIndex index.php
+
+RewriteEngine On
+
+# Direkter Zugriff auf interne Daten und Quellkomponenten
+RewriteRule ^(?:includes|data|storage|tests|docs)(?:/|$) - [F,L,NC]
+
+# HTTPS und bevorzugte Domain im Produktivbetrieb
+RewriteCond %{HTTPS} !=on [OR]
+RewriteCond %{HTTP_HOST} !^energieexperten-bremen\.de$ [NC]
+RewriteCond %{HTTP_HOST} !^(?:localhost|127\.0\.0\.1)(?::[0-9]+)?$ [NC]
+RewriteRule ^ https://energieexperten-bremen.de%{REQUEST_URI} [R=301,L]
+
+# Vorhandene Dateien und Verzeichnisse unverändert ausliefern
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Kanonische, lesbare Adressen
+RewriteRule ^energieberater-bremen/?$ energieberater_bremen.php [L,QSA]
+RewriteRule ^energieberatung-bremen/?$ energieberatung_bremen.php [L,QSA]
+RewriteRule ^sanierungsfahrplan-bremen/?$ sanierungsfahrplan_bremen.php [L,QSA]
+RewriteRule ^energieausweis-bremen/?$ energieausweis_bremen.php [L,QSA]
+RewriteRule ^foerdermittelberatung-bremen/?$ foerdermittelberatung_bremen.php [L,QSA]
+RewriteRule ^baubegleitung-bremen/?$ baubegleitung_bremen.php [L,QSA]
+RewriteRule ^nichtwohngebaeude-bremen/?$ nichtwohngebaeude_bremen.php [L,QSA]
+RewriteRule ^energieexperten/?$ experten.php [L,QSA]
+RewriteRule ^energieexperten/([a-z0-9-]+)/?$ experte.php?slug=$1 [L,QSA]
+RewriteRule ^anbieter-eintragen/?$ anbieter_eintragen.php [L,QSA]
+RewriteRule ^anfrage/?$ anfrage.php [L,QSA]
+RewriteRule ^danke/?$ danke.php [L,QSA]
+RewriteRule ^ratgeber/?$ ratgeber.php [L,QSA]
+RewriteRule ^ratgeber/([a-z0-9-]+)/?$ artikel.php?slug=$1 [L,QSA]
+RewriteRule ^ueber-uns/?$ ueber_uns.php [L,QSA]
+RewriteRule ^redaktionsrichtlinien/?$ redaktionsrichtlinien.php [L,QSA]
+RewriteRule ^kontakt/?$ kontakt.php [L,QSA]
+RewriteRule ^impressum/?$ impressum.php [L,QSA]
+RewriteRule ^datenschutz/?$ datenschutz.php [L,QSA]
+RewriteRule ^stadtteil/([a-z0-9-]+)/?$ stadtteil.php?slug=$1 [L,QSA]
+RewriteRule ^sitemap\.xml$ sitemap.php [L]
+
+# Eigene Fehlerseite
+ErrorDocument 404 /404.php
+
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "DENY"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains" env=HTTPS
+</IfModule>
+
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+</IfModule>
+
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/css application/javascript application/json application/ld+json application/xml image/svg+xml
+</IfModule>
+
+<FilesMatch "^(?:\.env|composer\.(?:json|lock)|README\.md)$">
+    Require all denied
+</FilesMatch>
+

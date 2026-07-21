@@ -1,0 +1,12 @@
+{
+  "public_profiles": [],
+  "internal_example_schema": {
+    "notice": "Interne Strukturhilfe. Dieser Datensatz wird nicht öffentlich ausgegeben.",
+    "published": false,
+    "verified": false,
+    "slug": "internes-beispiel-nicht-veroeffentlichen",
+    "company": "INTERNES BEISPIEL",
+    "profile_type": "basis"
+  }
+}
+
