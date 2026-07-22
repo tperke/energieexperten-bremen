@@ -1,9 +1,5 @@
 User-agent: *
-Allow: /
-Disallow: /includes/
-Disallow: /data/
-Disallow: /storage/
-Disallow: /*?*
+Disallow: /
 
-Sitemap: https://energieexperten-bremen.de/sitemap.xml
-
+# Sicherheitsfallback. Bei aktivem mod_rewrite erzeugt robots.php die passende
+# Fassung für Vorschau oder Live-Domain.
