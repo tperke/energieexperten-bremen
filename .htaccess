@@ -7,9 +7,10 @@ RewriteEngine On
 RewriteRule ^(?:includes|data|storage|tests|docs)(?:/|$) - [F,L,NC]
 
 # HTTPS und bevorzugte Domain im Produktivbetrieb
+# Lokale Entwicklungsadressen werden nicht auf die Produktivdomain umgeleitet.
+RewriteCond %{HTTP_HOST} !^(?:localhost|127\.0\.0\.1|[a-z0-9-]+\.(?:test|local))(?::[0-9]+)?$ [NC]
 RewriteCond %{HTTPS} !=on [OR]
 RewriteCond %{HTTP_HOST} !^energieexperten-bremen\.de$ [NC]
-RewriteCond %{HTTP_HOST} !^(?:localhost|127\.0\.0\.1)(?::[0-9]+)?$ [NC]
 RewriteRule ^ https://energieexperten-bremen.de%{REQUEST_URI} [R=301,L]
 
 # Vorhandene Dateien und Verzeichnisse unverändert ausliefern
@@ -66,4 +67,3 @@ ErrorDocument 404 /404.php
 <FilesMatch "^(?:\.env|composer\.(?:json|lock)|README\.md)$">
     Require all denied
 </FilesMatch>
-
