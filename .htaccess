@@ -11,6 +11,9 @@ RewriteRule ^(?:includes|data|storage|tests|docs)(?:/|$) - [F,L,NC]
 # Eine zentrale HTTP/HTTPS-Weiterleitung bleibt der Hauptdomain beziehungsweise
 # dem Hosting vorbehalten, damit hier keine Umleitungsschleife entsteht.
 
+# Dynamische Indexierungssteuerung für Vorschau und Live-Domain
+RewriteRule ^robots\.txt$ robots.php [L]
+
 # Vorhandene Dateien und Verzeichnisse unverändert ausliefern
 RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d
@@ -33,6 +36,7 @@ RewriteRule ^ratgeber/?$ ratgeber.php [L,QSA]
 RewriteRule ^ratgeber/([a-z0-9-]+)/?$ artikel.php?slug=$1 [L,QSA]
 RewriteRule ^ueber-uns/?$ ueber_uns.php [L,QSA]
 RewriteRule ^redaktionsrichtlinien/?$ redaktionsrichtlinien.php [L,QSA]
+RewriteRule ^glossar/?$ glossar.php [L,QSA]
 RewriteRule ^kontakt/?$ kontakt.php [L,QSA]
 RewriteRule ^impressum/?$ impressum.php [L,QSA]
 RewriteRule ^datenschutz/?$ datenschutz.php [L,QSA]
