@@ -6,14 +6,14 @@ require __DIR__ . '/includes/bootstrap.php';
 header('Content-Type: application/xml; charset=UTF-8');
 header('X-Robots-Tag: noindex');
 $entries = [];
-$paths = [
-    '/', '/energieberater-bremen/', '/energieberatung-bremen/', '/sanierungsfahrplan-bremen/',
-    '/energieausweis-bremen/', '/foerdermittelberatung-bremen/', '/baubegleitung-bremen/',
-    '/nichtwohngebaeude-bremen/', '/energieexperten/', '/ratgeber/', '/anbieter-eintragen/',
-    '/ueber-uns/', '/redaktionsrichtlinien/', '/glossar/'
+$pageKeys = [
+    'home', 'energieberater', 'energieberatung', 'sanierungsfahrplan',
+    'energieausweis', 'foerdermittel', 'baubegleitung', 'nichtwohngebaeude',
+    'experten', 'ratgeber', 'anbieter', 'ueber_uns', 'redaktion', 'glossar',
 ];
-foreach ($paths as $path) {
-    $entries[] = ['path' => $path, 'lastmod' => $config['site']['content_reviewed_at']];
+foreach ($pageKeys as $pageKey) {
+    $seo = seo_for($pageKey);
+    $entries[] = ['path' => $seo['path'], 'lastmod' => $seo['modified']];
 }
 foreach (load_json('artikel.json') as $article) {
     if (!empty($article['published_public'])) {

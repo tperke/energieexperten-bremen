@@ -16,7 +16,7 @@ $seoPages = [
     'anfrage' => ['title' => 'Unverbindliche Anfrage zur Energieberatung in Bremen', 'description' => 'Beschreiben Sie Ihr Gebäude und Ihr Vorhaben. Die Anfrage wird sicher verarbeitet und nicht ohne konkrete Information weitergegeben.', 'path' => '/anfrage/', 'robots' => 'noindex,follow'],
     'ratgeber' => ['title' => 'Ratgeber zu Energieberatung und Sanierung in Bremen', 'description' => 'Lesen Sie verständliche, quellenbasierte Beiträge zu Energieberatung, Sanierungsfahrplan, Energieausweis, Fördermitteln und Heizungsplanung.', 'path' => '/ratgeber/'],
     'glossar' => ['title' => 'Glossar Energieberatung: Fachbegriffe verständlich erklärt', 'description' => 'Von BAFA und iSFP bis U-Wert: Das Glossar erklärt wichtige Begriffe zu Energieberatung, Förderung und energetischer Sanierung verständlich.', 'path' => '/glossar/'],
-    'ueber_uns' => ['title' => 'Über das Portal Energieexperten Bremen', 'description' => 'Zweck, Arbeitsweise und Grenzen des regionalen Informationsportals für Energieberatung und energetische Sanierung in Bremen.', 'path' => '/ueber-uns/'],
+    'ueber_uns' => ['title' => 'Über Energieexperten Bremen: Beratung und Transparenz', 'description' => 'Lernen Sie das Energieberatungsunternehmen für Bremen, seine Arbeitsweise, Qualitätsmaßstäbe und das Büro in Düsseldorf kennen.', 'path' => '/ueber-uns/'],
     'redaktion' => ['title' => 'Redaktionsrichtlinien und Transparenz', 'description' => 'So recherchiert, prüft, aktualisiert und kennzeichnet Energieexperten Bremen redaktionelle Inhalte, Quellen und veröffentlichte Anbieterprofile.', 'path' => '/redaktionsrichtlinien/'],
     'kontakt' => ['title' => 'Kontakt zu Energieexperten Bremen', 'description' => 'Kontaktieren Sie das Portal bei redaktionellen Hinweisen, Fragen zu Anbieterprofilen oder allgemeinen Anliegen.', 'path' => '/kontakt/', 'robots' => 'noindex,follow'],
     'impressum' => ['title' => 'Impressum', 'description' => 'Impressum des Informationsportals Energieexperten Bremen.', 'path' => '/impressum/', 'robots' => 'noindex,follow'],
@@ -24,9 +24,34 @@ $seoPages = [
     '404' => ['title' => 'Seite nicht gefunden', 'description' => 'Die gewünschte Seite ist nicht verfügbar.', 'path' => '/404/', 'robots' => 'noindex,follow'],
 ];
 
+/* Bei einer inhaltlichen Änderung nur das Datum der betroffenen Seite aktualisieren. */
+$seoModifiedDates = [
+    'home' => '2026-07-22',
+    'energieberater' => '2026-07-22',
+    'energieberatung' => '2026-07-22',
+    'sanierungsfahrplan' => '2026-07-22',
+    'energieausweis' => '2026-07-22',
+    'foerdermittel' => '2026-07-22',
+    'baubegleitung' => '2026-07-22',
+    'nichtwohngebaeude' => '2026-07-22',
+    'experten' => '2026-07-22',
+    'anbieter' => '2026-07-22',
+    'anfrage' => '2026-07-22',
+    'ratgeber' => '2026-07-22',
+    'glossar' => '2026-07-22',
+    'ueber_uns' => '2026-07-22',
+    'redaktion' => '2026-07-22',
+    'kontakt' => '2026-07-22',
+    'impressum' => '2026-07-22',
+    'datenschutz' => '2026-07-22',
+    '404' => '2026-07-22',
+];
+
 function seo_for(string $pageKey, array $overrides = []): array
 {
-    global $seoPages;
+    global $seoPages, $seoModifiedDates;
     $fallback = $seoPages['home'];
-    return array_merge($seoPages[$pageKey] ?? $fallback, $overrides);
+    $page = $seoPages[$pageKey] ?? $fallback;
+    $page['modified'] = $seoModifiedDates[$pageKey] ?? $seoModifiedDates['home'];
+    return array_merge($page, $overrides);
 }

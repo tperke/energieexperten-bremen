@@ -45,10 +45,19 @@ function is_active_path(string $path): bool
     return $current === $expected;
 }
 
-function page_modified_iso(): string
+function page_modified_iso(?string $date = null): string
 {
     global $config;
-    return $config['site']['content_reviewed_at'] . 'T09:00:00+02:00';
+    $fallback = (string) $config['site']['content_reviewed_at'];
+    $candidate = is_string($date) && $date !== '' ? $date : $fallback;
+    $timezone = new DateTimeZone((string) $config['site']['timezone']);
+    $value = DateTimeImmutable::createFromFormat('!Y-m-d', $candidate, $timezone);
+
+    if (!$value || $value->format('Y-m-d') !== $candidate) {
+        $value = DateTimeImmutable::createFromFormat('!Y-m-d', $fallback, $timezone);
+    }
+
+    return $value->setTime(9, 0)->format(DATE_ATOM);
 }
 
 function format_date_de(string $date): string

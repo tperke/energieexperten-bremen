@@ -95,7 +95,7 @@ render_breadcrumbs($breadcrumbs);
                     <button class="button large" type="submit">Anfrage sicher senden</button><p class="required-note"><span aria-hidden="true">*</span> Pflichtangaben</p>
                 </form>
             </div>
-            <aside class="form-aside"><h2>Was danach geschieht</h2><ol><li>Der Portalbetreiber prüft, ob die Anfrage verständlich ist.</li><li>Ohne Ihre gesonderte Bestätigung werden keine Daten weitergegeben.</li><li>Vor einer möglichen Weitergabe wird der konkrete Empfänger genannt.</li></ol><p>Das Portal selbst erbringt keine Energieberatung und gibt keine Förderzusage.</p></aside>
+            <aside class="form-aside"><h2>Was danach geschieht</h2><ol><li>Wir prüfen, ob Ihre Anfrage verständlich ist.</li><li>Ohne Ihre gesonderte Bestätigung werden keine Daten weitergegeben.</li><li>Vor der Beteiligung eines externen Fachpartners wird der konkrete Empfänger genannt.</li></ol><p>Wir teilen vorab transparent mit, wer die Beratung übernimmt. Eine Förderzusage ist damit nicht verbunden.</p></aside>
         </div>
     </section>
 </main>

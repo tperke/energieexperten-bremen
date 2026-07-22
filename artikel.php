@@ -33,7 +33,7 @@ $breadcrumbs = [
     ['name' => 'Ratgeber', 'url' => site_url('ratgeber/')],
     ['name' => $article['title'], 'url' => site_url(ltrim($path, '/'))],
 ];
-$seoOverride = ['title' => $article['seo_title'] ?? $article['title'], 'description' => $article['excerpt'], 'path' => $path, 'type' => 'article'];
+$seoOverride = ['title' => $article['seo_title'] ?? $article['title'], 'description' => $article['excerpt'], 'path' => $path, 'type' => 'article', 'modified' => $article['updated']];
 site_header('ratgeber', [
     'seo' => $seoOverride,
     'breadcrumbs' => $breadcrumbs,

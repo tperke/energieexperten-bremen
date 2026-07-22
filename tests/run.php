@@ -88,6 +88,8 @@ foreach ($contrastChecks as [$foreground, $background, $minimum, $label]) {
 $expectedSeo = ['home', 'energieberater', 'energieberatung', 'sanierungsfahrplan', 'energieausweis', 'foerdermittel', 'baubegleitung', 'nichtwohngebaeude', 'experten', 'anbieter', 'anfrage', 'ratgeber', 'glossar', 'ueber_uns', 'redaktion', 'kontakt', 'impressum', 'datenschutz', '404'];
 foreach ($expectedSeo as $key) {
     check(isset($seoPages[$key]['title'], $seoPages[$key]['description'], $seoPages[$key]['path']), 'SEO Konfiguration vorhanden: ' . $key);
+    $seo = seo_for($key);
+    check((bool) preg_match('/^\d{4}-\d{2}-\d{2}$/', $seo['modified'] ?? ''), 'Seitenspezifisches Änderungsdatum vorhanden: ' . $key);
 }
 $titles = array_column($seoPages, 'title');
 check(count($titles) === count(array_unique($titles)), 'Seitentitel sind eindeutig');
@@ -104,10 +106,18 @@ foreach ($config['sources'] as $key => $source) {
     check((bool) preg_match('/^\d{2}\.\d{2}\.\d{4}$/', $source['checked']), 'Quelle besitzt Prüfdatum: ' . $key);
 }
 
-$requiredFiles = ['index.php', 'glossar.php', 'robots.php', '.htaccess', 'robots.txt', 'sitemap.php', 'assets/css/style.css', 'assets/js/main.js', 'assets/images/logo.svg', 'assets/images/favicon.svg', 'assets/images/hero_bremen.webp', 'README.md'];
+$requiredFiles = ['index.php', 'glossar.php', 'robots.php', '.htaccess', 'robots.txt', 'sitemap.php', 'assets/css/style.css', 'assets/js/main.js', 'assets/images/logo.svg', 'assets/images/favicon.svg', 'assets/images/hero_bremen.webp', 'assets/images/og_image_modern.webp', 'README.md'];
 foreach ($requiredFiles as $file) {
     check(is_file($root . '/' . $file) && filesize($root . '/' . $file) > 0, 'Erforderliche Datei vorhanden: ' . $file);
 }
+
+$schemaSource = (string) file_get_contents($root . '/includes/schema.php');
+check(str_contains($schemaSource, 'og_image_modern.webp') && !str_contains($schemaSource, "og_image.webp'"), 'Open Graph und Schema verwenden dasselbe Bild');
+check(str_contains($schemaSource, "'ProfessionalService'") && str_contains($schemaSource, "'areaServed'"), 'Organisation ist als Energieberatungsunternehmen für Bremen ausgezeichnet');
+$htaccessSource = (string) file_get_contents($root . '/.htaccess');
+$robotsRewritePosition = strpos($htaccessSource, 'RewriteRule ^robots\.txt$ robots.php [L]');
+$existingFilePosition = strpos($htaccessSource, 'RewriteCond %{REQUEST_FILENAME} -f');
+check($robotsRewritePosition !== false && $existingFilePosition !== false && $robotsRewritePosition < $existingFilePosition, 'robots.txt wird vor der Dateiprüfung dynamisch über robots.php ausgeliefert');
 
 if ($failures !== []) {
     echo "\n" . count($failures) . " Prüfung oder Prüfungen fehlgeschlagen.\n";

@@ -6,13 +6,34 @@ function build_schema(string $pageKey, array $seo, array $options = []): array
 {
     global $config;
     $canonical = site_url(ltrim($seo['path'], '/'));
+    $socialImageUrl = site_url('assets/images/og_image_modern.webp');
     $graph = [
         [
-            '@type' => 'Organization',
+            '@type' => ['Organization', 'ProfessionalService'],
             '@id' => site_url('#organization'),
             'name' => $config['site']['name'],
+            'legalName' => $config['operator']['company'],
             'url' => site_url(),
             'logo' => site_url('assets/images/logo.svg'),
+            'description' => 'Energieberatungsunternehmen für Bremen mit Büro in Düsseldorf.',
+            'email' => $config['mail']['recipient'],
+            'telephone' => $config['operator']['phone'],
+            'address' => [
+                '@type' => 'PostalAddress',
+                'streetAddress' => $config['operator']['street'],
+                'postalCode' => $config['operator']['postal_code'],
+                'addressLocality' => $config['operator']['city'],
+                'addressCountry' => 'DE',
+            ],
+            'areaServed' => ['@type' => 'City', 'name' => 'Bremen'],
+            'contactPoint' => [
+                '@type' => 'ContactPoint',
+                'contactType' => 'Kundenberatung',
+                'telephone' => $config['operator']['phone'],
+                'email' => $config['mail']['recipient'],
+                'areaServed' => ['@type' => 'City', 'name' => 'Bremen'],
+                'availableLanguage' => ['de'],
+            ],
         ],
         [
             '@type' => 'WebSite',
@@ -32,11 +53,12 @@ function build_schema(string $pageKey, array $seo, array $options = []): array
             'isPartOf' => ['@id' => site_url('#website')],
             'primaryImageOfPage' => [
                 '@type' => 'ImageObject',
-                'url' => site_url('assets/images/og_image.webp'),
+                '@id' => $socialImageUrl . '#image',
+                'url' => $socialImageUrl,
                 'width' => 1200,
                 'height' => 630,
             ],
-            'dateModified' => page_modified_iso(),
+            'dateModified' => page_modified_iso($seo['modified'] ?? null),
             'inLanguage' => 'de-DE',
         ],
     ];
@@ -96,8 +118,8 @@ function build_schema(string $pageKey, array $seo, array $options = []): array
             'publisher' => ['@id' => site_url('#organization')],
             'image' => [
                 '@type' => 'ImageObject',
-                '@id' => site_url('assets/images/og_image.webp') . '#image',
-                'url' => site_url('assets/images/og_image.webp'),
+                '@id' => $socialImageUrl . '#image',
+                'url' => $socialImageUrl,
                 'width' => 1200,
                 'height' => 630,
             ],
