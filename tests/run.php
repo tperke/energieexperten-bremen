@@ -16,6 +16,32 @@ function check(bool $condition, string $message): void
     echo "OK: {$message}\n";
 }
 
+function rgb_from_hex(string $hex): array
+{
+    $hex = ltrim($hex, '#');
+    return [
+        hexdec(substr($hex, 0, 2)) / 255,
+        hexdec(substr($hex, 2, 2)) / 255,
+        hexdec(substr($hex, 4, 2)) / 255,
+    ];
+}
+
+function relative_luminance(string $hex): float
+{
+    $channels = array_map(
+        static fn (float $value): float => $value <= 0.04045 ? $value / 12.92 : (($value + 0.055) / 1.055) ** 2.4,
+        rgb_from_hex($hex)
+    );
+    return 0.2126 * $channels[0] + 0.7152 * $channels[1] + 0.0722 * $channels[2];
+}
+
+function contrast_ratio(string $foreground, string $background): float
+{
+    $first = relative_luminance($foreground);
+    $second = relative_luminance($background);
+    return (max($first, $second) + 0.05) / (min($first, $second) + 0.05);
+}
+
 $jsonFiles = ['leistungen.json', 'artikel.json', 'experten.json', 'stadtteile.json'];
 foreach ($jsonFiles as $file) {
     $path = $root . '/data/' . $file;
@@ -34,6 +60,30 @@ foreach ($articles as $article) {
 
 require $root . '/includes/config.php';
 require $root . '/includes/seo.php';
+require $root . '/includes/form_security.php';
+
+check($config['mail']['host'] === 'smtp.ionos.de', 'IONOS SMTP-Server ist konfiguriert');
+check($config['mail']['port'] === 465 && $config['mail']['encryption'] === 'ssl', 'SMTP nutzt SSL auf Port 465');
+check($config['mail']['auto_tls'] === true && $config['mail']['authentication'] === true, 'Auto TLS und SMTP-Authentifizierung sind aktiviert');
+check($config['mail']['recipient'] === 'info@energieexperten-bremen.de', 'Formularziel ist korrekt konfiguriert');
+check(mail_is_configured() === false, 'Passwort-Platzhalter verhindert unbeabsichtigten SMTP-Versand');
+
+$contrastChecks = [
+    ['#17242c', '#fcfcfa', 4.5, 'Fließtext auf Seitenhintergrund'],
+    ['#5a6870', '#fcfcfa', 4.5, 'Sekundärtext auf Seitenhintergrund'],
+    ['#245f47', '#ffffff', 4.5, 'Textlink auf Weiß'],
+    ['#ffffff', '#2f775a', 4.5, 'Primärschaltfläche'],
+    ['#d9f3e3', '#245f47', 4.5, 'CTA-Eyebrow auf dunklem Grün'],
+    ['#ffffff', '#1d5b43', 4.5, 'Hero-Überschrift auf hellstem Verlaufswert'],
+    ['#e7f0f4', '#1d5b43', 4.5, 'Hero-Einleitung auf hellstem Verlaufswert'],
+    ['#aebfc7', '#0b2332', 4.5, 'Footer-Sekundärtext'],
+    ['#647982', '#ffffff', 3.0, 'Formularrahmen als UI-Komponente'],
+];
+foreach ($contrastChecks as [$foreground, $background, $minimum, $label]) {
+    $ratio = contrast_ratio($foreground, $background);
+    check($ratio >= $minimum, sprintf('Kontrast %s: %.2f:1 (mindestens %.1f:1)', $label, $ratio, $minimum));
+}
+
 $expectedSeo = ['home', 'energieberater', 'energieberatung', 'sanierungsfahrplan', 'energieausweis', 'foerdermittel', 'baubegleitung', 'nichtwohngebaeude', 'experten', 'anbieter', 'anfrage', 'ratgeber', 'ueber_uns', 'redaktion', 'kontakt', 'impressum', 'datenschutz', '404'];
 foreach ($expectedSeo as $key) {
     check(isset($seoPages[$key]['title'], $seoPages[$key]['description'], $seoPages[$key]['path']), 'SEO Konfiguration vorhanden: ' . $key);
@@ -57,4 +107,3 @@ if ($failures !== []) {
 }
 
 echo "\nAlle Projektprüfungen erfolgreich.\n";
-
