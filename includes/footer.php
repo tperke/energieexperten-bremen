@@ -9,7 +9,7 @@ function site_footer(): void
 <footer class="site-footer">
     <div class="wrap footer-grid">
         <div class="footer-intro">
-            <img src="<?= e(site_url('assets/images/logo-inverse.svg')) ?>" width="238" height="50" alt="Energieexperten Bremen">
+            <img src="<?= e(site_url('assets/images/logo-inverse.svg')) ?>" width="238" height="50" loading="lazy" decoding="async" alt="Energieexperten Bremen">
             <p>Regionales Informationsportal für Energieberatung, energetische Sanierung und die Suche nach qualifizierten Fachleuten in Bremen.</p>
             <p class="transparency-note">Das Portal ist selbst kein Energieberatungsunternehmen. Anbieterprofile und bezahlte Platzierungen werden sichtbar gekennzeichnet.</p>
         </div>
@@ -20,6 +20,7 @@ function site_footer(): void
                 <li><a href="<?= e(site_url('energieberatung-bremen/')) ?>">Energieberatung</a></li>
                 <li><a href="<?= e(site_url('sanierungsfahrplan-bremen/')) ?>">Sanierungsfahrplan</a></li>
                 <li><a href="<?= e(site_url('ratgeber/')) ?>">Ratgeber</a></li>
+                <li><a href="<?= e(site_url('glossar/')) ?>">Glossar Energieberatung</a></li>
             </ul>
         </div>
         <div>
@@ -49,4 +50,3 @@ function site_footer(): void
 </html>
 <?php
 }
-
