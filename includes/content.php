@@ -13,7 +13,7 @@ $pages = [
                 'title' => 'Woran Sie einen geeigneten Experten erkennen',
                 'paragraphs' => [
                     'Die Berufsbezeichnung allein sagt noch nicht, für welche Förderprogramme oder Gebäudetypen eine Person qualifiziert ist. Fragen Sie deshalb nach Ausbildung, Weiterbildung, Berufserfahrung, Referenzen und dem konkreten Leistungsumfang.',
-                    'Wenn eine Förderung eine gelistete Fachperson verlangt, prüfen Sie die passende Eintragung direkt in der Energieeffizienz Expertenliste des Bundes. Die Eintragung ist nach Tätigkeitsbereichen gegliedert. Eine Qualifikation für Wohngebäude umfasst nicht automatisch Nichtwohngebäude oder Baudenkmale.',
+                    'Wenn eine Förderung eine gelistete Fachperson verlangt, prüfen Sie die passende Eintragung direkt in der Energieeffizienz-Expertenliste des Bundes. Die Eintragung ist nach Tätigkeitsbereichen gegliedert. Eine Qualifikation für Wohngebäude umfasst nicht automatisch Nichtwohngebäude oder Baudenkmale.',
                 ],
                 'bullets' => ['Passende Listenkategorie für das Vorhaben', 'Erfahrung mit dem Gebäudetyp und der geplanten Maßnahme', 'Schriftliches Angebot mit klaren Leistungen und Ergebnissen', 'Erklärung möglicher Interessenkonflikte', 'Nachvollziehbare Erreichbarkeit und Terminplanung'],
             ],
@@ -42,9 +42,9 @@ $pages = [
             [
                 'title' => 'Angebote sinnvoll vergleichen',
                 'paragraphs' => [
-                    'Vergleichen Sie nicht nur den Gesamtpreis. Entscheidend ist, welche Vor Ort Termine, Berechnungen, Varianten, Erläuterungen und Nacharbeiten enthalten sind. Auch die Begleitung bei Rückfragen von Förderstellen oder Fachunternehmen sollte eindeutig geregelt sein.',
+                    'Vergleichen Sie nicht nur den Gesamtpreis. Entscheidend ist, welche Vor-Ort-Termine, Berechnungen, Varianten, Erläuterungen und Nacharbeiten enthalten sind. Auch die Begleitung bei Rückfragen von Förderstellen oder Fachunternehmen sollte eindeutig geregelt sein.',
                 ],
-                'bullets' => ['Ausgangslage und Beratungsziel', 'Enthaltene Vor Ort Termine', 'Berechnungen und Dokumente', 'Förderantrag und technische Bestätigungen', 'Fachplanung und Qualitätskontrolle', 'Zeitplan, Honorar und mögliche Zusatzkosten'],
+                'bullets' => ['Ausgangslage und Beratungsziel', 'Enthaltene Vor-Ort-Termine', 'Berechnungen und Dokumente', 'Förderantrag und technische Bestätigungen', 'Fachplanung und Qualitätskontrolle', 'Zeitplan, Honorar und mögliche Zusatzkosten'],
             ],
             [
                 'title' => 'So unterstützt das Portal',
@@ -110,7 +110,7 @@ $pages = [
             [
                 'title' => 'Kosten und Angebote einer Energieberatung vergleichen',
                 'paragraphs' => [
-                    'Der Aufwand hängt unter anderem von Größe und Komplexität des Gebäudes, der Qualität vorhandener Unterlagen, dem gewünschten Bericht und einer möglichen Förderabwicklung ab. Ein niedriger Preis ist wenig aussagekräftig, wenn Vor Ort Termin, Variantenvergleich oder Erläuterung fehlen.',
+                    'Der Aufwand hängt unter anderem von Größe und Komplexität des Gebäudes, der Qualität vorhandener Unterlagen, dem gewünschten Bericht und einer möglichen Förderabwicklung ab. Ein niedriger Preis ist wenig aussagekräftig, wenn Vor-Ort-Termin, Variantenvergleich oder Erläuterung fehlen.',
                     'Fordern Sie ein schriftliches Angebot mit Leistungsgrenzen, Ergebnisformat, Terminen und möglichen Zusatzkosten an. Klären Sie auch, ob Rückfragen nach Übergabe, Änderungen am Bericht oder die Vorbereitung weiterer Förderanträge enthalten sind.',
                 ],
             ],
@@ -152,7 +152,7 @@ $pages = [
                 'title' => 'Von der Bestandsaufnahme bis zur Erläuterung',
                 'steps' => [
                     ['title' => 'Auftrag und Ziele', 'text' => 'Gebäude, Wünsche und Grenzen des Auftrags werden festgelegt.'],
-                    ['title' => 'Vor Ort Aufnahme', 'text' => 'Bauteile, Anlagentechnik und bekannte Modernisierungen werden erfasst.'],
+                    ['title' => 'Vor-Ort-Aufnahme', 'text' => 'Bauteile, Anlagentechnik und bekannte Modernisierungen werden erfasst.'],
                     ['title' => 'Bilanz und Varianten', 'text' => 'Die Fachperson berechnet den Ausgangszustand und entwickelt abgestimmte Pakete.'],
                     ['title' => 'Dokumentation', 'text' => 'Sie erhalten die vorgesehenen Unterlagen mit Reihenfolge und Erläuterungen.'],
                     ['title' => 'Abschlussgespräch', 'text' => 'Ergebnisse, Unsicherheiten und nächste Entscheidungen werden besprochen.'],
@@ -161,7 +161,7 @@ $pages = [
             [
                 'title' => 'Welche Unterlagen und Ergebnisse zum iSFP gehören',
                 'paragraphs' => [
-                    'Für die Bestandsaufnahme sind Pläne, Flächen, Verbrauchsdaten, Angaben zur Heizung und Nachweise bereits ausgeführter Maßnahmen hilfreich. Die Fachperson ergänzt diese Informationen durch den Vor Ort Termin und dokumentiert die energetisch relevanten Bauteile und Anlagen.',
+                    'Für die Bestandsaufnahme sind Pläne, Flächen, Verbrauchsdaten, Angaben zur Heizung und Nachweise bereits ausgeführter Maßnahmen hilfreich. Die Fachperson ergänzt diese Informationen durch den Vor-Ort-Termin und dokumentiert die energetisch relevanten Bauteile und Anlagen.',
                     'Ein geförderter individueller Sanierungsfahrplan wird nach den geltenden BAFA Vorgaben erstellt. Er soll sowohl den Ausgangszustand als auch aufeinander abgestimmte Sanierungsschritte verständlich darstellen. Lassen Sie sich die Ergebnisse erläutern und fragen Sie nach Annahmen, langfristig vorgesehenen Maßnahmen und Punkten, die vor einer Umsetzung genauer untersucht werden müssen.',
                 ],
             ],
@@ -177,7 +177,7 @@ $pages = [
                 'title' => 'Kostenfaktoren beim Sanierungsfahrplan',
                 'paragraphs' => [
                     'Das Beratungshonorar wird insbesondere durch Gebäudegröße, Anzahl der Wohneinheiten, Bauweise, vorhandene Unterlagen und den Aufwand der Datenerfassung beeinflusst. Bei Wohnungseigentümergemeinschaften kommen Abstimmung und Ergebnispräsentation hinzu.',
-                    'Fragen Sie, ob Antragstellung, Vor Ort Termin, Berechnung, iSFP Dokumente, Abschlussgespräch und mögliche Nachbesserungen im Angebot enthalten sind. Eine Förderung reduziert gegebenenfalls den Eigenanteil, ersetzt aber nicht die Prüfung des vollständigen Honorars und der aktuellen Fördervoraussetzungen.',
+                    'Fragen Sie, ob Antragstellung, Vor-Ort-Termin, Berechnung, iSFP-Dokumente, Abschlussgespräch und mögliche Nachbesserungen im Angebot enthalten sind. Eine Förderung reduziert gegebenenfalls den Eigenanteil, ersetzt aber nicht die Prüfung des vollständigen Honorars und der aktuellen Fördervoraussetzungen.',
                 ],
             ],
             [
@@ -230,7 +230,7 @@ $pages = [
                 'title' => 'Welche Faktoren die Kosten beeinflussen',
                 'paragraphs' => [
                     'Der Preis hängt vom Ausweistyp, der Gebäudegröße, der Anzahl der Einheiten, der Qualität vorhandener Unterlagen und dem notwendigen Erfassungsaufwand ab. Ein Bedarfsausweis erfordert üblicherweise mehr technische Daten als ein Verbrauchsausweis.',
-                    'Lassen Sie sich vorab bestätigen, welcher Ausweis zulässig ist, welche Datenerhebung enthalten ist und ob ein Vor Ort Termin erforderlich oder angeboten wird. Auffällig niedrige Pauschalpreise sollten Sie insbesondere dann hinterfragen, wenn wesentliche Gebäudedaten noch fehlen.',
+                    'Lassen Sie sich vorab bestätigen, welcher Ausweis zulässig ist, welche Datenerhebung enthalten ist und ob ein Vor-Ort-Termin erforderlich oder angeboten wird. Auffällig niedrige Pauschalpreise sollten Sie insbesondere dann hinterfragen, wenn wesentliche Gebäudedaten noch fehlen.',
                 ],
             ],
             [
