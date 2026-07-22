@@ -44,7 +44,7 @@ render_breadcrumbs($breadcrumbs);
                 <div>
                     <p class="eyebrow">Direkter Einstieg</p>
                     <h2>Passende Grundlagen für Ihr Vorhaben</h2>
-                    <ul class="check-list"><li><a href="<?= e(site_url('energieberatung-bremen/')) ?>">Ablauf einer Energieberatung in Bremen</a></li><li><a href="<?= e(site_url('sanierungsfahrplan-bremen/')) ?>">Individuellen Sanierungsfahrplan verstehen</a></li><li><a href="<?= e(site_url('energieausweis-bremen/')) ?>">Bedarfs und Verbrauchsausweis einordnen</a></li><li><a href="<?= e(site_url('foerdermittelberatung-bremen/')) ?>">Förderwege und Antragsschritte prüfen</a></li><li><a href="<?= e(site_url('baubegleitung-bremen/')) ?>">Fachplanung und Baubegleitung vorbereiten</a></li></ul>
+                    <ul class="check-list"><li><a href="<?= e(site_url('energieberatung-bremen/')) ?>">Ablauf einer Energieberatung in Bremen</a></li><li><a href="<?= e(site_url('sanierungsfahrplan-bremen/')) ?>">Individuellen Sanierungsfahrplan verstehen</a></li><li><a href="<?= e(site_url('energieausweis-bremen/')) ?>">Bedarfs- und Verbrauchsausweis einordnen</a></li><li><a href="<?= e(site_url('foerdermittelberatung-bremen/')) ?>">Förderwege und Antragsschritte prüfen</a></li><li><a href="<?= e(site_url('baubegleitung-bremen/')) ?>">Fachplanung und Baubegleitung vorbereiten</a></li><li><a href="<?= e(site_url('glossar/')) ?>">Fachbegriffe im Glossar nachschlagen</a></li></ul>
                 </div>
             </div>
         </div>
