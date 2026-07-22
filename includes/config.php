@@ -13,17 +13,31 @@ function env_value(string $key, ?string $default = null): ?string
     return $value === false || $value === '' ? $default : $value;
 }
 
+function request_host(): string
+{
+    $host = strtolower((string) ($_SERVER['HTTP_HOST'] ?? ''));
+    return preg_replace('/:[0-9]+$/', '', $host) ?? '';
+}
+
+function request_is_https(): bool
+{
+    return ($_SERVER['HTTPS'] ?? '') === 'on'
+        || strtolower((string) ($_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '')) === 'https';
+}
+
 function default_site_base_url(): string
 {
     $host = $_SERVER['HTTP_HOST'] ?? '';
     if (is_string($host) && preg_match('/^(?:localhost|127\.0\.0\.1|[a-z0-9-]+\.(?:test|local))(?::[0-9]+)?$/i', $host) === 1) {
-        $https = ($_SERVER['HTTPS'] ?? '') === 'on' || ($_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '') === 'https';
-        return ($https ? 'https' : 'http') . '://' . $host;
+        return (request_is_https() ? 'https' : 'http') . '://' . $host;
+    }
+
+    if (is_string($host) && preg_match('/^(?:www\.)?energieexperten-bremen\.de(?::[0-9]+)?$/i', $host) === 1) {
+        return (request_is_https() ? 'https' : 'http') . '://' . $host;
     }
 
     if (is_string($host) && preg_match('/^(?:www\.)?neu-protec\.de(?::[0-9]+)?$/i', $host) === 1) {
-        $https = ($_SERVER['HTTPS'] ?? '') === 'on' || ($_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '') === 'https';
-        return ($https ? 'https' : 'http') . '://' . $host . '/kunden/energieexperten-bremen';
+        return (request_is_https() ? 'https' : 'http') . '://' . $host . '/kunden/energieexperten-bremen';
     }
 
     return 'http://neu-protec.de/kunden/energieexperten-bremen';
@@ -37,7 +51,7 @@ $config = [
         'locale' => 'de_DE',
         'timezone' => 'Europe/Berlin',
         'content_reviewed_at' => '2026-07-22',
-        'public_launch_ready' => false,
+        'public_launch_ready' => filter_var(env_value('PUBLIC_LAUNCH_READY', 'false'), FILTER_VALIDATE_BOOLEAN),
     ],
     'operator' => [
         'name' => env_value('OPERATOR_NAME', 'Thomas Perke'),
@@ -58,7 +72,7 @@ $config = [
         'mail_location' => env_value('MAIL_LOCATION', 'Deutschland und Europäische Union'),
     ],
     'mail' => [
-        'enabled' => filter_var(env_value('MAIL_ENABLED', 'true'), FILTER_VALIDATE_BOOLEAN),
+        'enabled' => filter_var(env_value('MAIL_ENABLED', 'false'), FILTER_VALIDATE_BOOLEAN),
         'transport' => 'smtp',
         'recipient' => env_value('MAIL_RECIPIENT', 'info@energieexperten-bremen.de'),
         'from' => env_value('MAIL_FROM', 'info@energieexperten-bremen.de'),
@@ -107,7 +121,7 @@ $config = [
             'checked' => '22.07.2026',
         ],
         'eee' => [
-            'label' => 'Energieeffizienz Expertenliste für Förderprogramme des Bundes',
+            'label' => 'Energieeffizienz-Expertenliste für Förderprogramme des Bundes',
             'url' => 'https://www.energie-effizienz-experten.de/',
             'checked' => '21.07.2026',
         ],
