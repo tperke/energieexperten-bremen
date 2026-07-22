@@ -129,9 +129,9 @@ site_header('home', ['faqs' => $homeFaqs]);
     <section class="section funding-section" aria-labelledby="funding-heading">
         <div class="wrap funding-panel">
             <div>
-                <p class="eyebrow">Stand 21. Juli 2026</p>
+                <p class="eyebrow">Stand 22. Juli 2026</p>
                 <h2 id="funding-heading">Förderbedingungen wurden aktuell angepasst</h2>
-                <p>BAFA und KfW führen Programme für Beratung und energetische Maßnahmen. Die KfW weist seit dem 21. Juli 2026 auf angepasste Bedingungen mehrerer Produkte hin. Das frühere Bremer Landesprogramm zum Heizungstausch ist eingestellt.</p>
+                <p>BAFA und KfW führen Programme für Beratung und energetische Maßnahmen. Die KfW weist seit dem 21. Juli 2026 auf angepasste Bedingungen mehrerer Produkte hin. Die früheren Bremer Landesprogramme zum Heizungstausch und zum Wärmeschutz im Wohngebäudebestand sind eingestellt.</p>
                 <p class="small">Prüfen Sie Beträge, Fristen und Beginn des Vorhabens direkt bei der zuständigen Stelle.</p>
             </div>
             <div class="funding-links"><a href="<?= e(site_url('foerdermittelberatung-bremen/')) ?>">Förderwege einordnen</a><a href="https://www.kfw.de/inlandsfoerderung/Bundesf%C3%B6rderung-f%C3%BCr-effiziente-Geb%C3%A4ude/" rel="noopener noreferrer">Aktuelle KfW Informationen</a><a href="https://umwelt.bremen.de/klima/uebersicht-foerderprogramme-2147359" rel="noopener noreferrer">Bremer Förderübersicht</a></div>
