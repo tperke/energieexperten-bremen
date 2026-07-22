@@ -164,6 +164,10 @@ Zeitabhängige Aussagen müssen anhand der in `includes/config.php` hinterlegten
 
 `sitemap.php` erzeugt die XML Sitemap dynamisch aus freigegebenen Hauptseiten und veröffentlichten Beiträgen. Sie ist unter `/sitemap.xml` erreichbar. Kontakt, Formulare, Rechtstexte, Filter und nicht freigegebene Profile werden nicht aufgenommen.
 
+`robots.php` erzeugt die Datei `/robots.txt` abhängig von der Umgebung. Auf der Vorschau bleibt die gesamte Installation für Suchmaschinen gesperrt. Auf der Live-Domain wird die freigegebene Sitemap genannt. Die statische `robots.txt` ist nur ein sperrender Sicherheitsfallback, falls die Apache-Umschreibung nicht aktiv ist.
+
+Für die Vorschau gilt `PUBLIC_LAUNCH_READY=false`. Auf der vollständig geprüften Hauptdomain `https://energieexperten-bremen.de` muss `SITE_BASE_URL` auf diese HTTPS-Adresse zeigen und `PUBLIC_LAUNCH_READY=true` gesetzt werden. Die Anwendung erkennt die Hauptdomain zusätzlich automatisch, wenn kein Umgebungswert vorgegeben ist.
+
 ## Google Search Console
 
 1. Domain Property nach vollständiger Domain und HTTPS Einrichtung bestätigen.
@@ -174,7 +178,7 @@ Zeitabhängige Aussagen müssen anhand der in `includes/config.php` hinterlegten
 
 ## Strukturierte Daten
 
-Die Seite erzeugt `Organization`, `WebSite`, `WebPage`, `BreadcrumbList`, `Service`, `Article` und bei sichtbaren Fragen `FAQPage`. Es werden weder `LocalBusiness` noch Bewertungen oder Sterne ausgegeben.
+Die Seite erzeugt `Organization`, `WebSite`, `WebPage`, `BreadcrumbList`, `Service`, `Article`, `DefinedTermSet` und bei sichtbaren Fragen `FAQPage`. Es werden weder `LocalBusiness` noch Bewertungen oder Sterne ausgegeben.
 
 Prüfung vor Veröffentlichung:
 
