@@ -2,16 +2,14 @@ Options -Indexes
 DirectoryIndex index.php
 
 RewriteEngine On
+RewriteBase /kunden/energieexperten-bremen/
 
 # Direkter Zugriff auf interne Daten und Quellkomponenten
 RewriteRule ^(?:includes|data|storage|tests|docs)(?:/|$) - [F,L,NC]
 
-# HTTPS und bevorzugte Domain im Produktivbetrieb
-# Lokale Entwicklungsadressen werden nicht auf die Produktivdomain umgeleitet.
-RewriteCond %{HTTP_HOST} !^(?:localhost|127\.0\.0\.1|[a-z0-9-]+\.(?:test|local))(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} !=on [OR]
-RewriteCond %{HTTP_HOST} !^energieexperten-bremen\.de$ [NC]
-RewriteRule ^ https://energieexperten-bremen.de%{REQUEST_URI} [R=301,L]
+# Die Vorschau liegt im Unterverzeichnis von neu-protec.de.
+# Eine zentrale HTTP/HTTPS-Weiterleitung bleibt der Hauptdomain beziehungsweise
+# dem Hosting vorbehalten, damit hier keine Umleitungsschleife entsteht.
 
 # Vorhandene Dateien und Verzeichnisse unverändert ausliefern
 RewriteCond %{REQUEST_FILENAME} -f [OR]
@@ -42,7 +40,7 @@ RewriteRule ^stadtteil/([a-z0-9-]+)/?$ stadtteil.php?slug=$1 [L,QSA]
 RewriteRule ^sitemap\.xml$ sitemap.php [L]
 
 # Eigene Fehlerseite
-ErrorDocument 404 /404.php
+ErrorDocument 404 /kunden/energieexperten-bremen/404.php
 
 <IfModule mod_headers.c>
     Header always set X-Content-Type-Options "nosniff"
