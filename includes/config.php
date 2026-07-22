@@ -32,15 +32,7 @@ function default_site_base_url(): string
         return (request_is_https() ? 'https' : 'http') . '://' . $host;
     }
 
-    if (is_string($host) && preg_match('/^(?:www\.)?energieexperten-bremen\.de(?::[0-9]+)?$/i', $host) === 1) {
-        return (request_is_https() ? 'https' : 'http') . '://' . $host;
-    }
-
-    if (is_string($host) && preg_match('/^(?:www\.)?neu-protec\.de(?::[0-9]+)?$/i', $host) === 1) {
-        return (request_is_https() ? 'https' : 'http') . '://' . $host . '/kunden/energieexperten-bremen';
-    }
-
-    return 'http://neu-protec.de/kunden/energieexperten-bremen';
+    return 'https://energieexperten-bremen.de';
 }
 
 $config = [
