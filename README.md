@@ -166,7 +166,7 @@ Zeitabhängige Aussagen müssen anhand der in `includes/config.php` hinterlegten
 
 `robots.php` erzeugt die Datei `/robots.txt` abhängig von der Umgebung. Auf der Vorschau bleibt die gesamte Installation für Suchmaschinen gesperrt. Auf der Live-Domain wird die freigegebene Sitemap genannt. Die statische `robots.txt` ist nur ein sperrender Sicherheitsfallback, falls die Apache-Umschreibung nicht aktiv ist.
 
-Für die Vorschau gilt `PUBLIC_LAUNCH_READY=false`. Auf der vollständig geprüften Hauptdomain `https://energieexperten-bremen.de` muss `SITE_BASE_URL` auf diese HTTPS-Adresse zeigen und `PUBLIC_LAUNCH_READY=true` gesetzt werden. Die Anwendung erkennt die Hauptdomain zusätzlich automatisch, wenn kein Umgebungswert vorgegeben ist.
+Für die Vorschau gilt `PUBLIC_LAUNCH_READY=false`. Auf der vollständig geprüften Hauptdomain `https://energieexperten-bremen.de` muss `SITE_BASE_URL` auf diese HTTPS-Adresse zeigen und `PUBLIC_LAUNCH_READY=true` ausdrücklich gesetzt werden. Ohne diesen Freigabewert bleibt jede Umgebung auf `noindex`.
 
 ## Google Search Console
 
