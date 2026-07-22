@@ -117,24 +117,173 @@ function valid_phone(mixed $value): ?string
     return preg_match('/^[0-9+()\/ .]{6,50}$/', $phone) ? $phone : null;
 }
 
-function send_portal_mail(string $subject, array $lines): bool
+function mail_is_configured(): bool
 {
     global $config;
     if (!$config['mail']['enabled']) {
         return false;
     }
 
+    if (($config['mail']['transport'] ?? '') !== 'smtp') {
+        return false;
+    }
+
+    $host = (string) ($config['mail']['host'] ?? '');
+    $port = (int) ($config['mail']['port'] ?? 0);
+    $username = valid_email($config['mail']['username'] ?? '');
+    $password = (string) ($config['mail']['password'] ?? '');
+    return preg_match('/^[a-z0-9.-]+$/i', $host) === 1
+        && $port >= 1
+        && $port <= 65535
+        && $username !== null
+        && $password !== ''
+        && $password !== 'HIER_E-MAIL-PASSWORT_EINFUEGEN';
+}
+
+function smtp_read_response($socket): array|false
+{
+    $lines = [];
+    $code = 0;
+    while (($line = fgets($socket, 2048)) !== false) {
+        $lines[] = rtrim($line, "\r\n");
+        if (preg_match('/^(\d{3})([ -])/', $line, $matches) !== 1) {
+            continue;
+        }
+        $code = (int) $matches[1];
+        if ($matches[2] === ' ') {
+            return ['code' => $code, 'lines' => $lines];
+        }
+    }
+    return false;
+}
+
+function smtp_command($socket, string $command, array $expectedCodes): array|false
+{
+    if (fwrite($socket, $command . "\r\n") === false) {
+        return false;
+    }
+    $response = smtp_read_response($socket);
+    return $response !== false && in_array($response['code'], $expectedCodes, true) ? $response : false;
+}
+
+function send_smtp_mail(string $recipient, string $from, string $subject, string $body, ?string $replyTo = null): bool
+{
+    global $config;
+    $mail = $config['mail'];
+    $host = (string) $mail['host'];
+    $port = (int) $mail['port'];
+    $encryption = strtolower((string) $mail['encryption']);
+    $implicitTls = $encryption === 'ssl';
+    $transport = ($implicitTls ? 'ssl' : 'tcp') . '://' . $host . ':' . $port;
+    $context = stream_context_create([
+        'ssl' => [
+            'verify_peer' => true,
+            'verify_peer_name' => true,
+            'peer_name' => $host,
+            'SNI_enabled' => true,
+            'crypto_method' => STREAM_CRYPTO_METHOD_TLS_CLIENT,
+        ],
+    ]);
+    $errorNumber = 0;
+    $errorMessage = '';
+    $socket = @stream_socket_client(
+        $transport,
+        $errorNumber,
+        $errorMessage,
+        (int) ($mail['timeout_seconds'] ?? 15),
+        STREAM_CLIENT_CONNECT,
+        $context
+    );
+    if ($socket === false) {
+        return false;
+    }
+
+    stream_set_timeout($socket, (int) ($mail['timeout_seconds'] ?? 15));
+    try {
+        $greeting = smtp_read_response($socket);
+        if ($greeting === false || $greeting['code'] !== 220) {
+            return false;
+        }
+
+        $serverName = (string) parse_url($config['site']['base_url'], PHP_URL_HOST);
+        $serverName = preg_match('/^[a-z0-9.-]+$/i', $serverName) === 1 ? $serverName : 'localhost';
+        $ehlo = smtp_command($socket, 'EHLO ' . $serverName, [250]);
+        if ($ehlo === false) {
+            return false;
+        }
+
+        if (!$implicitTls && !empty($mail['auto_tls'])) {
+            $supportsStartTls = stripos(implode("\n", $ehlo['lines']), 'STARTTLS') !== false;
+            if ($supportsStartTls) {
+                if (smtp_command($socket, 'STARTTLS', [220]) === false
+                    || !stream_socket_enable_crypto($socket, true, STREAM_CRYPTO_METHOD_TLS_CLIENT)) {
+                    return false;
+                }
+                $ehlo = smtp_command($socket, 'EHLO ' . $serverName, [250]);
+                if ($ehlo === false) {
+                    return false;
+                }
+            } elseif ($encryption === 'tls') {
+                return false;
+            }
+        }
+
+        if (!empty($mail['authentication'])) {
+            if (smtp_command($socket, 'AUTH LOGIN', [334]) === false
+                || smtp_command($socket, base64_encode((string) $mail['username']), [334]) === false
+                || smtp_command($socket, base64_encode((string) $mail['password']), [235]) === false) {
+                return false;
+            }
+        }
+
+        if (smtp_command($socket, 'MAIL FROM:<' . $from . '>', [250]) === false
+            || smtp_command($socket, 'RCPT TO:<' . $recipient . '>', [250, 251]) === false
+            || smtp_command($socket, 'DATA', [354]) === false) {
+            return false;
+        }
+
+        $domain = substr(strrchr($from, '@') ?: '@energieexperten-bremen.de', 1);
+        $headers = [
+            'Date: ' . date(DATE_RFC2822),
+            'Message-ID: <' . time() . '.' . bin2hex(random_bytes(8)) . '@' . $domain . '>',
+            'From: Energieexperten Bremen <' . $from . '>',
+            'To: ' . $recipient,
+            'Subject: ' . mb_encode_mimeheader($subject, 'UTF-8', 'B', "\r\n"),
+            'MIME-Version: 1.0',
+            'Content-Type: text/plain; charset=UTF-8',
+            'Content-Transfer-Encoding: 8bit',
+        ];
+        if ($replyTo !== null) {
+            $headers[] = 'Reply-To: ' . $replyTo;
+        }
+        $normalizedBody = str_replace(["\r\n", "\r"], "\n", $body);
+        $normalizedBody = preg_replace('/^\./m', '..', $normalizedBody) ?? $normalizedBody;
+        $payload = implode("\r\n", $headers) . "\r\n\r\n" . str_replace("\n", "\r\n", $normalizedBody);
+        if (fwrite($socket, $payload . "\r\n.\r\n") === false) {
+            return false;
+        }
+        $result = smtp_read_response($socket);
+        return $result !== false && $result['code'] === 250;
+    } finally {
+        @fwrite($socket, "QUIT\r\n");
+        fclose($socket);
+    }
+}
+
+function send_portal_mail(string $subject, array $lines, ?string $replyTo = null): bool
+{
+    global $config;
+    if (!mail_is_configured()) {
+        return false;
+    }
+
     $recipient = valid_email($config['mail']['recipient']);
     $from = valid_email($config['mail']['from']);
+    $replyTo = $replyTo !== null ? valid_email($replyTo) : null;
     if ($recipient === null || $from === null || preg_match('/[\r\n]/', $subject)) {
         return false;
     }
 
     $body = implode("\n", array_map(static fn ($line): string => str_replace(["\r", "\0"], '', (string) $line), $lines));
-    $headers = [
-        'From: Energieexperten Bremen <' . $from . '>',
-        'Content-Type: text/plain; charset=UTF-8',
-        'Content-Transfer-Encoding: 8bit',
-    ];
-    return mail($recipient, $subject, $body, implode("\r\n", $headers));
+    return send_smtp_mail($recipient, $from, $subject, $body, $replyTo);
 }
