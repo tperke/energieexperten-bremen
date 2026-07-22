@@ -41,19 +41,19 @@ function site_header(string $pageKey, array $options = []): void
     <meta property="og:description" content="<?= e($seo['description']) ?>">
     <meta property="og:url" content="<?= e($canonical) ?>">
     <meta property="og:site_name" content="<?= e($config['site']['name']) ?>">
-    <meta property="og:image" content="<?= e(site_url('assets/images/og_image.webp')) ?>">
+    <meta property="og:image" content="<?= e(site_url('assets/images/og_image_modern.webp')) ?>">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="Energieexperten Bremen: Orientierung für Energieberatung und Sanierung">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="<?= e($seo['title']) ?>">
     <meta name="twitter:description" content="<?= e($seo['description']) ?>">
-    <meta name="twitter:image" content="<?= e(site_url('assets/images/og_image.webp')) ?>">
+    <meta name="twitter:image" content="<?= e(site_url('assets/images/og_image_modern.webp')) ?>">
     <meta name="twitter:image:alt" content="Energieexperten Bremen: Orientierung für Energieberatung und Sanierung">
     <meta name="theme-color" content="#123247">
     <link rel="icon" href="<?= e(site_url('assets/images/favicon.svg')) ?>" type="image/svg+xml">
     <?php if ($pageKey === 'home'): ?>
-        <link rel="preload" as="image" href="<?= e(site_url('assets/images/hero_bremen_1200.webp')) ?>" imagesrcset="<?= e(site_url('assets/images/hero_bremen_800.webp')) ?> 800w, <?= e(site_url('assets/images/hero_bremen_1200.webp')) ?> 1200w, <?= e(site_url('assets/images/hero_bremen.webp')) ?> 1600w" imagesizes="(max-width: 840px) calc(100vw - 1.5rem), (max-width: 1220px) calc(100vw - 2.5rem), 1180px" fetchpriority="high">
+        <link rel="preload" as="image" href="<?= e(site_url('assets/images/hero_bremen_modern_1200.webp')) ?>" imagesrcset="<?= e(site_url('assets/images/hero_bremen_modern_800.webp')) ?> 800w, <?= e(site_url('assets/images/hero_bremen_modern_1200.webp')) ?> 1200w, <?= e(site_url('assets/images/hero_bremen_modern.webp')) ?> 1672w" imagesizes="100vw" fetchpriority="high">
     <?php endif; ?>
     <link rel="stylesheet" href="<?= e(asset_url('css/style.css')) ?>">
     <script type="application/ld+json" nonce="<?= e($cspNonce) ?>"><?= json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP) ?></script>

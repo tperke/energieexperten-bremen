@@ -16,20 +16,24 @@ $homeFaqs = [
 site_header('home', ['faqs' => $homeFaqs]);
 ?>
 <main id="main-content">
-    <section class="home-hero">
-        <img class="hero-image" src="<?= e(site_url('assets/images/hero_bremen.webp')) ?>" srcset="<?= e(site_url('assets/images/hero_bremen_800.webp')) ?> 800w, <?= e(site_url('assets/images/hero_bremen_1200.webp')) ?> 1200w, <?= e(site_url('assets/images/hero_bremen.webp')) ?> 1600w" sizes="(max-width: 840px) calc(100vw - 1.5rem), (max-width: 1220px) calc(100vw - 2.5rem), 1180px" width="1600" height="900" fetchpriority="high" decoding="async" alt="Illustration Bremer Wohnhäuser mit beispielhaft dargestellter energetischer Modernisierung">
-        <div class="hero-overlay"></div>
+    <section class="home-hero" aria-labelledby="home-hero-heading">
+        <picture class="hero-media">
+            <img class="hero-image" src="<?= e(site_url('assets/images/hero_bremen_modern.webp')) ?>" srcset="<?= e(site_url('assets/images/hero_bremen_modern_800.webp')) ?> 800w, <?= e(site_url('assets/images/hero_bremen_modern_1200.webp')) ?> 1200w, <?= e(site_url('assets/images/hero_bremen_modern.webp')) ?> 1672w" sizes="100vw" width="1672" height="941" fetchpriority="high" decoding="async" alt="Helle Illustration eines energetisch modernisierten Bremer Wohnhauses mit Solaranlage und Beratungsgespräch">
+        </picture>
+        <div class="hero-overlay" aria-hidden="true"></div>
         <div class="wrap hero-content">
-            <p class="eyebrow light">Orientierung für Bremen</p>
-            <h1>Energieberater und Energieexperten in Bremen finden</h1>
-            <p>Informieren Sie sich verständlich über Energieberatung, Sanierungsplanung und Förderwege. Finden Sie anschließend eine Fachperson, deren Qualifikation zu Ihrem Gebäude und Vorhaben passt.</p>
-            <div class="hero-actions">
-                <a class="button light" href="<?= e(site_url('energieexperten/')) ?>">Energieexperten finden</a>
-                <a class="button outline-light" href="<?= e(site_url('anfrage/')) ?>">Unverbindliche Anfrage stellen</a>
+            <div class="hero-copy">
+                <p class="eyebrow">Orientierung für Bremen</p>
+                <h1 id="home-hero-heading">Energieberater und Energieexperten in Bremen finden</h1>
+                <p>Informieren Sie sich verständlich über Energieberatung, Sanierungsplanung und Förderwege. Finden Sie anschließend eine Fachperson, deren Qualifikation zu Ihrem Gebäude und Vorhaben passt.</p>
+                <div class="hero-actions">
+                    <a class="button" href="<?= e(site_url('energieexperten/')) ?>">Energieexperten finden</a>
+                    <a class="button secondary" href="<?= e(site_url('anfrage/')) ?>">Unverbindliche Anfrage stellen</a>
+                </div>
+                <ul class="trust-row">
+                    <li>Quellenbasiert</li><li>Regional eingeordnet</li><li>Ohne Tracking</li>
+                </ul>
             </div>
-            <ul class="trust-row">
-                <li>Quellenbasiert</li><li>Regional eingeordnet</li><li>Ohne Tracking</li>
-            </ul>
         </div>
     </section>
 
