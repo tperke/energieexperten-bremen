@@ -64,7 +64,7 @@ $config = [
         'mail_location' => env_value('MAIL_LOCATION', 'Deutschland und Europäische Union'),
     ],
     'mail' => [
-        'enabled' => filter_var(env_value('MAIL_ENABLED', 'false'), FILTER_VALIDATE_BOOLEAN),
+        'enabled' => true,
         'transport' => 'smtp',
         'recipient' => env_value('MAIL_RECIPIENT', 'info@energieexperten-bremen.de'),
         'from' => env_value('MAIL_FROM', 'info@energieexperten-bremen.de'),
@@ -74,12 +74,12 @@ $config = [
         'auto_tls' => filter_var(env_value('SMTP_AUTO_TLS', 'true'), FILTER_VALIDATE_BOOLEAN),
         'authentication' => filter_var(env_value('SMTP_AUTHENTICATION', 'true'), FILTER_VALIDATE_BOOLEAN),
         'username' => env_value('SMTP_USERNAME', 'info@energieexperten-bremen.de'),
-        'password' => env_value('SMTP_PASSWORD', 'HIER_E-MAIL-PASSWORT_EINFUEGEN'),
+        'password' => env_value('SMTP_PASSWORD', 'HIER_DAS_E-MAIL-PASSWORT_HINTERLEGEN'),
         'timeout_seconds' => 15,
     ],
     'forms' => [
         'minimum_seconds' => 4,
-        'maximum_requests' => 4,
+        'maximum_requests' => 400,
         'window_seconds' => 3600,
         'rate_limit_salt' => env_value('RATE_LIMIT_SALT', 'energieexperten-bremen-local-salt'),
         'forwarding_enabled' => false,
