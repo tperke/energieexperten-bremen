@@ -13,14 +13,25 @@ function env_value(string $key, ?string $default = null): ?string
     return $value === false || $value === '' ? $default : $value;
 }
 
+function default_site_base_url(): string
+{
+    $host = $_SERVER['HTTP_HOST'] ?? '';
+    if (is_string($host) && preg_match('/^(?:localhost|127\.0\.0\.1|[a-z0-9-]+\.(?:test|local))(?::[0-9]+)?$/i', $host) === 1) {
+        $https = ($_SERVER['HTTPS'] ?? '') === 'on' || ($_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '') === 'https';
+        return ($https ? 'https' : 'http') . '://' . $host;
+    }
+
+    return 'https://energieexperten-bremen.de';
+}
+
 $config = [
     'site' => [
         'name' => 'Energieexperten Bremen',
         'tagline' => 'Orientierung für Energieberatung und Sanierung in Bremen',
-        'base_url' => rtrim(env_value('SITE_BASE_URL', 'https://energieexperten-bremen.de'), '/'),
+        'base_url' => rtrim(env_value('SITE_BASE_URL', default_site_base_url()), '/'),
         'locale' => 'de_DE',
         'timezone' => 'Europe/Berlin',
-        'content_reviewed_at' => '2026-07-21',
+        'content_reviewed_at' => '2026-07-22',
         'public_launch_ready' => false,
     ],
     'operator' => [
@@ -64,22 +75,22 @@ $config = [
         'bafa_ebw' => [
             'label' => 'BAFA, Bundesförderung Energieberatung für Wohngebäude',
             'url' => 'https://www.bafa.de/DE/Energie/Energieberatung/Energieberatung_Wohngebaeude/energieberatung_wohngebaeude_node.html',
-            'checked' => '21.07.2026',
+            'checked' => '22.07.2026',
         ],
         'bafa_isfp' => [
             'label' => 'BAFA, Merkblatt zum individuellen Sanierungsfahrplan',
             'url' => 'https://www.bafa.de/SharedDocs/Downloads/DE/Energie/ebw_merkblatt_isfp_2023.html',
-            'checked' => '21.07.2026',
+            'checked' => '22.07.2026',
         ],
         'bafa_ebn' => [
             'label' => 'BAFA, Energieberatung für Nichtwohngebäude, Anlagen und Systeme',
             'url' => 'https://www.bafa.de/DE/Energie/Energieberatung/Nichtwohngebaeude_Anlagen_Systeme/nichtwohngebaeude_anlagen_systeme_node.html',
-            'checked' => '21.07.2026',
+            'checked' => '22.07.2026',
         ],
         'kfw_beg' => [
             'label' => 'KfW, Bundesförderung für effiziente Gebäude',
             'url' => 'https://www.kfw.de/inlandsfoerderung/Bundesf%C3%B6rderung-f%C3%BCr-effiziente-Geb%C3%A4ude/',
-            'checked' => '21.07.2026',
+            'checked' => '22.07.2026',
         ],
         'eee' => [
             'label' => 'Energieeffizienz Expertenliste für Förderprogramme des Bundes',
@@ -94,7 +105,7 @@ $config = [
         'bremen_funding' => [
             'label' => 'Land Bremen, Übersicht der Förderprogramme',
             'url' => 'https://umwelt.bremen.de/klima/uebersicht-foerderprogramme-2147359',
-            'checked' => '21.07.2026',
+            'checked' => '22.07.2026',
         ],
         'klimabauzentrum' => [
             'label' => 'Klima Bau Zentrum Bremen',
@@ -103,4 +114,3 @@ $config = [
         ],
     ],
 ];
-
