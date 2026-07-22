@@ -51,7 +51,7 @@ if (($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'POST') {
             '',
             'Datenschutzhinweis gelesen: ja',
             'Automatische Weitergabe: nein',
-        ]);
+        ], $email);
         if ($sent) {
             $_SESSION['form_success'] = 'Vielen Dank. Ihre Anfrage wurde an den Portalbetreiber übermittelt. Sie wurde nicht an einen Energieberater weitergegeben.';
             header('Location: ' . site_url('danke/'), true, 303);
@@ -70,7 +70,7 @@ render_breadcrumbs($breadcrumbs);
     <section class="section form-section">
         <div class="wrap form-layout">
             <div class="form-card">
-                <?php if (!$config['mail']['enabled']): ?><div class="notice warning" role="status"><strong>Projektstatus:</strong> Der E Mail Versand ist noch nicht konfiguriert. Das Formular speichert in diesem Zustand keine Anfrage.</div><?php endif; ?>
+                <?php if (!mail_is_configured()): ?><div class="notice warning" role="status"><strong>SMTP noch gesperrt:</strong> Tragen Sie vor der produktiven Nutzung das E-Mail-Passwort in der Serverkonfiguration ein. Das Formular speichert in diesem Zustand keine Anfrage.</div><?php endif; ?>
                 <?php if ($errors !== []): ?><div class="form-errors" role="alert" tabindex="-1"><h2>Bitte prüfen Sie Ihre Angaben</h2><ul><?php foreach ($errors as $error): ?><li><?= e($error) ?></li><?php endforeach; ?></ul></div><?php endif; ?>
                 <form method="post" action="<?= e(site_url('anfrage/')) ?>" class="secure-form">
                     <input type="hidden" name="_token" value="<?= e($context['token']) ?>">
@@ -91,7 +91,7 @@ render_breadcrumbs($breadcrumbs);
                         <div class="field"><label for="phone">Telefonnummer, freiwillig</label><input id="phone" name="phone" type="tel" maxlength="50" value="<?= e(safe_old($old, 'phone')) ?>" autocomplete="tel"></div>
                         <div class="field full"><span class="field-label">Gewünschter Kontaktweg <span aria-hidden="true">*</span></span><div class="radio-row"><label><input type="radio" name="contact_way" value="E Mail" required<?= checked(safe_old($old, 'contact_way') !== 'Telefon') ?>> E Mail</label><label><input type="radio" name="contact_way" value="Telefon"<?= checked(safe_old($old, 'contact_way') === 'Telefon') ?>> Telefon</label></div></div>
                     </div></fieldset>
-                    <div class="privacy-box"><h2>Datenschutzhinweis direkt zum Formular</h2><p>Verarbeitet werden Ihre Formularangaben zur Bearbeitung der von Ihnen gewünschten Kontaktaufnahme. Empfänger ist zunächst ausschließlich der noch zu konfigurierende Portalbetreiber. Eine Weitergabe an Energieberater ist deaktiviert. Speicherdauer, Hosting und E Mail Dienst müssen vor Veröffentlichung verbindlich konfiguriert und in der <a href="<?= e(site_url('datenschutz/')) ?>">Datenschutzerklärung</a> benannt werden.</p><label class="checkbox"><input type="checkbox" name="privacy_acknowledged" value="1" required<?= checked(isset($old['privacy_acknowledged'])) ?>><span>Ich habe diesen Datenschutzhinweis und die Datenschutzerklärung gelesen. <span aria-hidden="true">*</span></span></label></div>
+                    <div class="privacy-box"><h2>Datenschutzhinweis direkt zum Formular</h2><p>neu-protec Mediendesign verarbeitet Ihre Angaben zur Bearbeitung der gewünschten Kontaktaufnahme. Die Übermittlung in das IONOS-Postfach erfolgt verschlüsselt. Eine automatische Weitergabe an Energieberater findet nicht statt. Anfragen werden grundsätzlich spätestens sechs Monate nach Abschluss gelöscht, sofern keine gesetzlichen Pflichten oder Rechtsansprüche entgegenstehen. Einzelheiten finden Sie in der <a href="<?= e(site_url('datenschutz/')) ?>">Datenschutzerklärung</a>.</p><label class="checkbox"><input type="checkbox" name="privacy_acknowledged" value="1" required<?= checked(isset($old['privacy_acknowledged'])) ?>><span>Ich habe diesen Datenschutzhinweis und die Datenschutzerklärung gelesen. <span aria-hidden="true">*</span></span></label></div>
                     <button class="button large" type="submit">Anfrage sicher senden</button><p class="required-note"><span aria-hidden="true">*</span> Pflichtangaben</p>
                 </form>
             </div>
