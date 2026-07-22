@@ -11,7 +11,7 @@ if ($filter !== '') {
 }
 $directoryFaqs = [
     ['question' => 'Wie finde ich einen geeigneten Energieberater in Bremen?', 'answer' => 'Grenzen Sie zuerst Gebäudetyp, gewünschte Leistung und mögliches Förderprogramm ein. Prüfen Sie anschließend Listenkategorie, Erfahrung, Leistungsumfang, Termin und Honorar mehrerer geeigneter Fachpersonen.'],
-    ['question' => 'Ist jeder Energieberater für BAFA oder KfW zugelassen?', 'answer' => 'Nein. Je nach Programm, Gebäude und Maßnahme ist eine bestimmte Qualifikation oder Listenkategorie erforderlich. Kontrollieren Sie die Eintragung für Ihr konkretes Vorhaben in der offiziellen Energieeffizienz Expertenliste.'],
+    ['question' => 'Ist jeder Energieberater für BAFA oder KfW zugelassen?', 'answer' => 'Nein. Je nach Programm, Gebäude und Maßnahme ist eine bestimmte Qualifikation oder Listenkategorie erforderlich. Kontrollieren Sie die Eintragung für Ihr konkretes Vorhaben in der offiziellen Energieeffizienz-Expertenliste.'],
     ['question' => 'Was kostet ein Energieberater in Bremen?', 'answer' => 'Das Honorar hängt von Gebäudegröße, Unterlagen, Beratungsprodukt, Berechnungen, Förderbegleitung und Anzahl der Termine ab. Fordern Sie ein schriftliches Angebot mit eindeutigem Leistungsumfang an.'],
     ['question' => 'Welche Unterlagen benötigt ein Energieexperte?', 'answer' => 'Hilfreich sind Baupläne, Flächen, Verbrauchsdaten, Angaben zur Heizung, Schornsteinfegerprotokolle und Nachweise früherer Modernisierungen. Fehlende Unterlagen sollten vor dem Angebot genannt werden.'],
     ['question' => 'Empfiehlt das Portal einzelne Anbieter?', 'answer' => 'Nein. Das Portal stellt bestätigte Angaben transparent dar. Bezahlte Hervorhebungen werden gekennzeichnet und verändern weder Prüfung noch Sortiergrundsätze. Die Auswahlentscheidung bleibt bei den Auftraggebenden.'],
@@ -37,7 +37,7 @@ render_breadcrumbs($breadcrumbs);
             <?php if ($profiles === []): ?>
                 <div class="empty-state large">
                     <div class="empty-icon" aria-hidden="true">✓</div>
-                    <div><h2>Noch keine geprüften Profile veröffentlicht</h2><p>Wir zeigen keine erfundenen Beispielanbieter. Bis reale Profile geprüft und zur Veröffentlichung bestätigt wurden, nutzen Sie bitte die offizielle Energieeffizienz Expertenliste des Bundes.</p><p>Sie sind als Energieberater in Bremen tätig? Informieren Sie sich über Aufnahme und Prüfung.</p></div>
+                    <div><h2>Noch keine geprüften Profile veröffentlicht</h2><p>Wir zeigen keine erfundenen Beispielanbieter. Bis reale Profile geprüft und zur Veröffentlichung bestätigt wurden, nutzen Sie bitte die offizielle Energieeffizienz-Expertenliste des Bundes.</p><p>Sie sind als Energieberater in Bremen tätig? Informieren Sie sich über Aufnahme und Prüfung.</p></div>
                     <div class="stack-actions"><a class="button" href="https://www.energie-effizienz-experten.de/" rel="noopener noreferrer">Offizielle Expertensuche</a><a class="button secondary" href="<?= e(site_url('anbieter-eintragen/')) ?>">Anbieter eintragen</a></div>
                 </div>
             <?php else: ?>
@@ -69,7 +69,7 @@ render_breadcrumbs($breadcrumbs);
                 <div>
                     <h3>Angebote richtig anfragen</h3>
                     <p>Nennen Sie Baujahr, Nutzung, Größe, bekannte Modernisierungen und die gewünschte Leistung. Vorhandene Pläne, Verbrauchsdaten und Angaben zur Heizung helfen der Fachperson, Aufwand und Bearbeitungszeit realistisch einzuschätzen.</p>
-                    <p>Ein vergleichbares Angebot sollte Vor Ort Termine, Berechnungen, Ergebnisunterlagen, Abschlussgespräch, Förderaufgaben und mögliche Zusatzkosten eindeutig ausweisen. Fragen Sie auch, wann die Bearbeitung beginnen kann und welche Unterlagen vorab benötigt werden.</p>
+                    <p>Ein vergleichbares Angebot sollte Vor-Ort-Termine, Berechnungen, Ergebnisunterlagen, Abschlussgespräch, Förderaufgaben und mögliche Zusatzkosten eindeutig ausweisen. Fragen Sie auch, wann die Bearbeitung beginnen kann und welche Unterlagen vorab benötigt werden.</p>
                     <a class="text-link" href="<?= e(site_url('energieberater-bremen/')) ?>">Auswahlkriterien für Energieberater lesen</a>
                 </div>
             </div>
