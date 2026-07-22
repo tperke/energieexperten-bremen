@@ -43,7 +43,7 @@ $config = [
         'locale' => 'de_DE',
         'timezone' => 'Europe/Berlin',
         'content_reviewed_at' => '2026-07-22',
-        'public_launch_ready' => filter_var(env_value('PUBLIC_LAUNCH_READY', 'false'), FILTER_VALIDATE_BOOLEAN),
+        'public_launch_ready' => filter_var(env_value('PUBLIC_LAUNCH_READY', 'true'), FILTER_VALIDATE_BOOLEAN),
     ],
     'operator' => [
         'name' => env_value('OPERATOR_NAME', 'Thomas Perke'),

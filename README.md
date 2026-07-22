@@ -73,7 +73,7 @@ Die zusätzliche Datei `includes/content.php` bündelt redaktionelle Leistungsse
 5. HTTPS einrichten und sämtliche Aufrufe auf `https://energieexperten-bremen.de` leiten.
 6. Die Werte aus `.env.example` als geschützte Servervariablen einrichten. Die Datei selbst darf nicht mit Zugangsdaten veröffentlicht werden. `SITE_BASE_URL` bleibt `https://energieexperten-bremen.de`.
 7. Schreibrecht für `storage/logs/` restriktiv vergeben. Empfohlen ist ein Verzeichnis außerhalb des öffentlichen Webstamms und eine Anpassung des Pfades in `includes/bootstrap.php`.
-8. `PUBLIC_LAUNCH_READY=true` erst nach erfolgreicher Inhalts-, SSL- und Funktionserprobung setzen. Für eine erneute Vorschau kann der Wert vorübergehend auf `false` gestellt werden.
+8. Die Produktionsfassung verwendet `PUBLIC_LAUNCH_READY=true`. Für Wartung oder eine erneute Vorschau kann der Serverwert vorübergehend auf `false` gestellt werden.
 9. Erst nach Einsetzen des echten SMTP-Passworts `MAIL_ENABLED=true` setzen.
 
 ## Lokale Prüfung
@@ -166,9 +166,9 @@ Zeitabhängige Aussagen müssen anhand der in `includes/config.php` hinterlegten
 
 `sitemap.php` erzeugt die XML Sitemap dynamisch aus freigegebenen Hauptseiten und veröffentlichten Beiträgen. Sie ist unter `/sitemap.xml` erreichbar. Kontakt, Formulare, Rechtstexte, Filter und nicht freigegebene Profile werden nicht aufgenommen.
 
-`robots.php` erzeugt die Datei `/robots.txt` abhängig von `PUBLIC_LAUNCH_READY`. Bei gesperrter Veröffentlichung bleibt die gesamte Installation für Suchmaschinen blockiert. Bei Freigabe wird die Sitemap der Hauptdomain genannt. Die statische `robots.txt` ist nur ein sperrender Sicherheitsfallback, falls die Apache-Umschreibung nicht aktiv ist.
+`robots.php` erzeugt die Datei `/robots.txt` abhängig von `PUBLIC_LAUNCH_READY`. Bei einer ausdrücklich gesetzten Wartungssperre bleibt die gesamte Installation für Suchmaschinen blockiert. Im Produktionsbetrieb werden die öffentlichen Seiten freigegeben und die Sitemap der Hauptdomain genannt. Die statische `robots.txt` enthält dieselbe Produktionsfreigabe als Fallback, falls die Apache-Umschreibung nicht aktiv ist.
 
-Für den Livebetrieb gelten `SITE_BASE_URL=https://energieexperten-bremen.de` und die ausdrücklich gesetzte Servervariable `PUBLIC_LAUNCH_READY=true`. Ohne diesen Serverwert bleiben HTML-Seiten und die dynamische robots.txt aus Sicherheitsgründen vollständig für die Indexierung gesperrt.
+Für den Livebetrieb gelten `SITE_BASE_URL=https://energieexperten-bremen.de` und `PUBLIC_LAUNCH_READY=true`. Die Projektkonfiguration verwendet diese Werte standardmäßig. Eine Servervariable mit `PUBLIC_LAUNCH_READY=false` kann die Indexierung bei Wartungsarbeiten gezielt wieder sperren.
 
 ## Google Search Console
 
@@ -180,7 +180,7 @@ Für den Livebetrieb gelten `SITE_BASE_URL=https://energieexperten-bremen.de` un
 
 ## Strukturierte Daten
 
-Die Seite erzeugt `Organization`, `WebSite`, `WebPage`, `BreadcrumbList`, `Service`, `Article`, `DefinedTermSet` und bei sichtbaren Fragen `FAQPage`. Es werden weder `LocalBusiness` noch Bewertungen oder Sterne ausgegeben.
+Die Seite erzeugt `Organization`, `ProfessionalService`, `WebSite`, `WebPage`, `BreadcrumbList`, `Service`, `Article`, `DefinedTermSet` und bei sichtbaren Fragen `FAQPage`. Bewertungen oder Sterne werden nicht ohne nachgewiesene Grundlage ausgegeben.
 
 Prüfung vor Veröffentlichung:
 

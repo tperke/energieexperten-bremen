@@ -63,6 +63,7 @@ require $root . '/includes/config.php';
 require $root . '/includes/seo.php';
 require $root . '/includes/form_security.php';
 
+check($config['site']['public_launch_ready'] === true, 'Produktionsfassung ist für Suchmaschinen freigegeben');
 check($config['mail']['host'] === 'smtp.ionos.de', 'IONOS SMTP-Server ist konfiguriert');
 check($config['mail']['port'] === 465 && $config['mail']['encryption'] === 'ssl', 'SMTP nutzt SSL auf Port 465');
 check($config['mail']['auto_tls'] === true && $config['mail']['authentication'] === true, 'Auto TLS und SMTP-Authentifizierung sind aktiviert');
@@ -122,6 +123,13 @@ $htaccessSource = (string) file_get_contents($root . '/.htaccess');
 $robotsRewritePosition = strpos($htaccessSource, 'RewriteRule ^robots\.txt$ robots.php [L]');
 $existingFilePosition = strpos($htaccessSource, 'RewriteCond %{REQUEST_FILENAME} -f');
 check($robotsRewritePosition !== false && $existingFilePosition !== false && $robotsRewritePosition < $existingFilePosition, 'robots.txt wird vor der Dateiprüfung dynamisch über robots.php ausgeliefert');
+$robotsFallback = (string) file_get_contents($root . '/robots.txt');
+check(preg_match('/^Allow: \/$/m', $robotsFallback) === 1, 'Statische robots.txt gibt öffentliche Seiten frei');
+check(preg_match('/^Disallow: \/$/m', $robotsFallback) !== 1, 'Statische robots.txt enthält keine globale Crawling-Sperre');
+check(str_contains($robotsFallback, 'Sitemap: https://energieexperten-bremen.de/sitemap.xml'), 'Statische robots.txt nennt die Produktions-Sitemap');
+$headerSource = (string) file_get_contents($root . '/includes/header.php');
+check(str_contains($headerSource, 'index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1'), 'Öffentliche Seiten verwenden freigebende Meta-Robots-Signale');
+check(str_contains($headerSource, '<link rel="canonical"'), 'Öffentliche Seiten geben eine kanonische Adresse aus');
 
 if ($failures !== []) {
     echo "\n" . count($failures) . " Prüfung oder Prüfungen fehlgeschlagen.\n";

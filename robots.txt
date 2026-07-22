@@ -1,5 +1,10 @@
 User-agent: *
-Disallow: /
+Allow: /
+Disallow: /includes/
+Disallow: /data/
+Disallow: /storage/
+Disallow: /*?*
 
-# Sicherheitsfallback. Bei aktivem mod_rewrite erzeugt robots.php die passende
-# Fassung für Vorschau oder Live-Domain.
+Sitemap: https://energieexperten-bremen.de/sitemap.xml
+
+# Produktionsfallback, falls die dynamische Ausgabe über robots.php ausfällt.

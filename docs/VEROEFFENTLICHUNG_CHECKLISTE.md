@@ -64,5 +64,4 @@
 5. Sortierlogik entspricht der veröffentlichten Beschreibung
 6. Keine automatische Weiterleitung an unbenannte Partner
 
-Erst nach Bestätigung aller blockierenden Punkte darf `public_launch_ready` in der Konfiguration auf `true` gesetzt und der Formularversand aktiviert werden.
-
+Die Produktionsfassung verwendet `public_launch_ready=true`. Für Wartung oder eine erneute nicht öffentliche Prüfung kann die Servervariable `PUBLIC_LAUNCH_READY=false` gesetzt werden. Der Formularversand bleibt davon getrennt und darf nur mit vollständig geschützter SMTP-Konfiguration aktiviert werden.
