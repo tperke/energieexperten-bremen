@@ -327,6 +327,16 @@ select:focus, input:focus, textarea:focus { border-color: var(--green-700); box-
 .summary-box h2 { color: var(--white); font-size: 1.55rem; }
 .summary-box p { margin-bottom: 0; color: #e5eef1; }
 .action-list { display: grid; gap: 0.7rem; padding-left: 1.4rem; }
+.related-guides ul { display: grid; gap: 0.8rem; margin: 0; padding: 0; list-style: none; }
+.related-guides li { padding: 1rem 1.1rem; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--white); }
+.related-guides a { display: inline-block; color: var(--navy-950); font-weight: 600; }
+.related-guides span { display: block; margin-top: 0.35rem; color: var(--muted); font-size: 0.9rem; }
+.glossary-intro { margin-bottom: 2rem; }
+.glossary-list { display: grid; gap: 0; margin: 0; }
+.glossary-list > div { padding: 1.4rem 0; border-top: 1px solid var(--line); scroll-margin-top: 110px; }
+.glossary-list > div:last-child { border-bottom: 1px solid var(--line); }
+.glossary-list dt { overflow-wrap: anywhere; color: var(--navy-950); font-family: var(--font-heading); font-size: clamp(1.2rem, 2vw, 1.45rem); font-weight: 600; }
+.glossary-list dd { margin: 0.45rem 0 0; overflow-wrap: anywhere; color: #3b4a52; font-size: 1.02rem; }
 .editorial-note { padding-block: 3.5rem; background: var(--navy-100); }
 
 .directory-filter { display: grid; grid-template-columns: minmax(240px, 420px) auto; align-items: end; gap: 0.7rem; margin-bottom: 2rem; padding: 1rem; border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--white); }
