@@ -2,13 +2,14 @@
   {
     "slug": "kosten-energieberatung-bremen",
     "title": "Was kostet eine Energieberatung in Bremen?",
+    "seo_title": "Kosten einer Energieberatung in Bremen im Überblick",
     "category": "Energieberatung",
     "excerpt": "Die Kosten hängen von Gebäude, Beratungsziel, Unterlagen und gewünschter Dokumentation ab. Ein belastbarer Vergleich beginnt deshalb mit dem Leistungsumfang.",
     "published": "2026-07-21",
     "updated": "2026-07-21",
     "reading_time": 7,
     "author": "Redaktion Energieexperten Bremen",
-    "reviewer": "Fachliche Prüfung vor Veröffentlichung ergänzen",
+    "reviewer": "Redaktionell anhand der angegebenen Originalquellen geprüft",
     "published_public": true,
     "intro": "Für eine Energieberatung gibt es keinen einheitlichen Marktpreis. Ein kleines Wohnhaus mit vollständigen Unterlagen verursacht einen anderen Aufwand als ein Mehrfamilienhaus, eine Eigentümergemeinschaft oder ein Gebäude mit ungeklärten Umbauten. Lassen Sie sich deshalb ein schriftliches Angebot geben, das Ergebnis, Termine und Zusatzleistungen genau benennt.",
     "sections": [
@@ -22,11 +23,11 @@
       {
         "heading": "Was in einem Angebot stehen sollte",
         "paragraphs": [
-          "Ein gutes Angebot nennt das Gebäude, den Anlass und die erwarteten Ergebnisse. Es beschreibt die Zahl der Vor Ort Termine, den Umgang mit fehlenden Unterlagen, die vorgesehenen Berechnungen und die Form der Abschlussbesprechung.",
+          "Ein gutes Angebot nennt das Gebäude, den Anlass und die erwarteten Ergebnisse. Es beschreibt die Zahl der Vor-Ort-Termine, den Umgang mit fehlenden Unterlagen, die vorgesehenen Berechnungen und die Form der Abschlussbesprechung.",
           "Klären Sie außerdem, ob Förderantrag, technische Bestätigungen, Rückfragen, Änderungen nach dem Abschlussgespräch und Fahrtkosten enthalten sind. Bei Eigentümergemeinschaften kann die Erläuterung in einer Versammlung einen eigenen Leistungsbaustein bilden."
         ],
         "bullets": [
-          "Bestandsaufnahme und Vor Ort Termin",
+          "Bestandsaufnahme und Vor-Ort-Termin",
           "Berechnungen und Beratungsvarianten",
           "Schriftliche Ergebnisunterlagen",
           "Erläuterung und Nachfragen",
@@ -67,12 +68,12 @@
     "slug": "wann-lohnt-sich-sanierungsfahrplan",
     "title": "Wann lohnt sich ein individueller Sanierungsfahrplan?",
     "category": "Sanierungsfahrplan",
-    "excerpt": "Ein Sanierungsfahrplan ist besonders hilfreich, wenn mehrere Maßnahmen über Jahre abgestimmt werden sollen und Fehlentscheidungen an Schnittstellen vermieden werden müssen.",
+    "excerpt": "Ein Sanierungsfahrplan hilft, mehrere Maßnahmen über Jahre abzustimmen, die richtige Reihenfolge zu planen und Fehler an Schnittstellen zu vermeiden.",
     "published": "2026-07-21",
     "updated": "2026-07-21",
     "reading_time": 8,
     "author": "Redaktion Energieexperten Bremen",
-    "reviewer": "Fachliche Prüfung vor Veröffentlichung ergänzen",
+    "reviewer": "Redaktionell anhand der angegebenen Originalquellen geprüft",
     "published_public": true,
     "intro": "Ein individueller Sanierungsfahrplan lohnt sich vor allem dann, wenn Sie nicht nur eine einzelne Reparatur betrachten, sondern das Gebäude langfristig verbessern möchten. Er verbindet Bestandsaufnahme, Zielbild und aufeinander abgestimmte Maßnahmenpakete. Dadurch können spätere Schritte bereits bei heutigen Entscheidungen berücksichtigt werden.",
     "sections": [
@@ -87,7 +88,7 @@
           "Unklare Reihenfolge mehrerer Maßnahmen",
           "Geplanter Heizungstausch bei älterer Gebäudehülle",
           "Entscheidungsbedarf in einer Eigentümergemeinschaft",
-          "Langfristige Budget und Terminplanung"
+          "Langfristige Budget- und Terminplanung"
         ]
       },
       {
@@ -130,14 +131,14 @@
     "slug": "energieausweis-bremen-bedarf-verbrauch",
     "title": "Energieausweis in Bremen: Bedarfsausweis oder Verbrauchsausweis?",
     "category": "Energieausweis",
-    "excerpt": "Der Bedarfsausweis bewertet Gebäude und Technik rechnerisch. Der Verbrauchsausweis beruht auf Verbrauchsdaten. Welche Form zulässig ist, muss für das Gebäude geprüft werden.",
+    "excerpt": "Bedarfsausweis oder Verbrauchsausweis: Erfahren Sie, wie sich beide Formen unterscheiden, welche Daten zählen und welcher Ausweis zulässig ist.",
     "published": "2026-07-21",
     "updated": "2026-07-21",
     "reading_time": 7,
     "author": "Redaktion Energieexperten Bremen",
-    "reviewer": "Rechtliche Prüfung vor Veröffentlichung ergänzen",
+    "reviewer": "Redaktionell anhand der angegebenen Originalquellen geprüft",
     "published_public": true,
-    "intro": "Bedarfs und Verbrauchsausweis verfolgen denselben Zweck, nutzen aber unterschiedliche Datengrundlagen. Der Bedarfsausweis beschreibt die energetische Qualität anhand von Gebäudehülle und Anlagentechnik. Der Verbrauchsausweis bildet gemessene Verbräuche ab und wird stärker durch Nutzung, Leerstand und individuelles Verhalten beeinflusst.",
+    "intro": "Bedarfs- und Verbrauchsausweis verfolgen denselben Zweck, nutzen aber unterschiedliche Datengrundlagen. Der Bedarfsausweis beschreibt die energetische Qualität anhand von Gebäudehülle und Anlagentechnik. Der Verbrauchsausweis bildet gemessene Verbräuche ab und wird stärker durch Nutzung, Leerstand und individuelles Verhalten beeinflusst.",
     "sections": [
       {
         "heading": "Was der Bedarfsausweis zeigt",
@@ -163,12 +164,12 @@
       {
         "heading": "Warum der Ausweis keine Sanierungsplanung ersetzt",
         "paragraphs": [
-          "Ein Energieausweis stellt Kennwerte und gesetzlich vorgesehene Angaben bereit. Er untersucht nicht automatisch alle Schadensbilder, berechnet keine ausführungsreifen Anschlüsse und erstellt keine abgestimmte Finanz oder Terminplanung.",
+          "Ein Energieausweis stellt Kennwerte und gesetzlich vorgesehene Angaben bereit. Er untersucht nicht automatisch alle Schadensbilder, berechnet keine ausführungsreifen Anschlüsse und erstellt keine abgestimmte Finanz- oder Terminplanung.",
           "Wenn Sie eine Sanierung planen, beauftragen Sie zusätzlich eine Beratung oder Fachplanung mit eindeutigem Ziel. Vorhandene Ausweisdaten können dabei eine Grundlage sein, müssen aber auf Aktualität und Qualität geprüft werden."
         ]
       }
     ],
-    "summary": "Bedarfs und Verbrauchsausweis beruhen auf unterschiedlichen Grundlagen. Welche Form für Ihr Gebäude zulässig ist, richtet sich nach der aktuellen Rechtslage und dem Einzelfall. Für Sanierungsentscheidungen ist meist eine weitergehende Beratung sinnvoll.",
+    "summary": "Bedarfs- und Verbrauchsausweis beruhen auf unterschiedlichen Grundlagen. Welche Form für Ihr Gebäude zulässig ist, richtet sich nach der aktuellen Rechtslage und dem Einzelfall. Für Sanierungsentscheidungen ist meist eine weitergehende Beratung sinnvoll.",
     "actions": [
       "Anlass und Gebäudenutzung benennen",
       "Baujahr, Einheiten und Modernisierungen dokumentieren",
@@ -186,12 +187,12 @@
     "slug": "unterlagen-energieberater",
     "title": "Welche Unterlagen benötigt ein Energieberater?",
     "category": "Energieberatung",
-    "excerpt": "Pläne, Flächen, Verbrauchsdaten und Angaben zur Anlagentechnik sparen Zeit. Auch ohne vollständige Unterlagen kann die Beratung beginnen, wenn Lücken offen benannt werden.",
+    "excerpt": "Welche Unterlagen braucht ein Energieberater? Pläne, Flächen, Verbrauchsdaten und Angaben zur Heizung sparen Zeit. Fehlende Daten sollten offen benannt werden.",
     "published": "2026-07-21",
     "updated": "2026-07-21",
     "reading_time": 6,
     "author": "Redaktion Energieexperten Bremen",
-    "reviewer": "Fachliche Prüfung vor Veröffentlichung ergänzen",
+    "reviewer": "Redaktionell anhand der angegebenen Originalquellen geprüft",
     "published_public": true,
     "intro": "Je besser die Ausgangslage dokumentiert ist, desto gezielter kann eine Fachperson das Gebäude aufnehmen. Fehlende Pläne sind bei älteren Häusern normal. Wichtig ist, vorhandene Informationen vollständig bereitzustellen und unbekannte Angaben nicht durch Vermutungen als Tatsachen zu ersetzen.",
     "sections": [
@@ -220,7 +221,7 @@
         "heading": "Eigene Ziele und bekannte Probleme",
         "paragraphs": [
           "Eine gute Beratung beginnt nicht nur mit technischen Daten. Beschreiben Sie, was Sie verbessern möchten: niedrigere Energiekosten, mehr Behaglichkeit, ein Heizungstausch, Schutz vor sommerlicher Hitze oder eine schrittweise Modernisierung.",
-          "Nennen Sie Zugluft, Feuchte, Schimmel, kalte Oberflächen oder überhitzte Räume. Solche Hinweise ersetzen keine Schadensdiagnose, helfen aber bei der Planung der Vor Ort Aufnahme."
+          "Nennen Sie Zugluft, Feuchte, Schimmel, kalte Oberflächen oder überhitzte Räume. Solche Hinweise ersetzen keine Schadensdiagnose, helfen aber bei der Planung der Vor-Ort-Aufnahme."
         ]
       },
       {
@@ -254,9 +255,9 @@
     "updated": "2026-07-21",
     "reading_time": 7,
     "author": "Redaktion Energieexperten Bremen",
-    "reviewer": "Fachliche Prüfung vor Veröffentlichung ergänzen",
+    "reviewer": "Redaktionell anhand der angegebenen Originalquellen geprüft",
     "published_public": true,
-    "intro": "Die Energieeffizienz Expertenliste des Bundes ist der wichtigste Ausgangspunkt, wenn ein Förderprogramm eine gelistete Fachperson verlangt. Ein Treffer in der Suche ist jedoch erst der Beginn der Auswahl. Entscheidend ist, ob Kategorie, Erfahrung und angebotene Leistung zu Ihrem Vorhaben passen.",
+    "intro": "Die Energieeffizienz-Expertenliste des Bundes ist der wichtigste Ausgangspunkt, wenn ein Förderprogramm eine gelistete Fachperson verlangt. Ein Treffer in der Suche ist jedoch erst der Beginn der Auswahl. Entscheidend ist, ob Kategorie, Erfahrung und angebotene Leistung zu Ihrem Vorhaben passen.",
     "sections": [
       {
         "heading": "Die passende Listenkategorie prüfen",
@@ -288,7 +289,7 @@
         "bullets": [
           "Garantierte Förderung oder Einsparung",
           "Unklarer Leistungsumfang",
-          "Fehlender Vor Ort Termin bei erforderlicher Bestandsaufnahme",
+          "Fehlender Vor-Ort-Termin bei erforderlicher Bestandsaufnahme",
           "Nicht nachvollziehbare Zertifikate",
           "Ungekennzeichnete Verkaufsinteressen"
         ]
@@ -318,7 +319,7 @@
     "updated": "2026-07-21",
     "reading_time": 9,
     "author": "Redaktion Energieexperten Bremen",
-    "reviewer": "Fachliche und rechtliche Prüfung vor Veröffentlichung ergänzen",
+    "reviewer": "Redaktionell anhand der angegebenen Originalquellen geprüft",
     "published_public": true,
     "intro": "Eine neue Heizung wird für viele Jahre ausgelegt. Deshalb sollte sie nicht nur zum bisherigen Verbrauch, sondern zum tatsächlichen Gebäude, zu möglichen Sanierungsschritten und zur künftigen Wärmeversorgung passen. Eine Beratung vor der Produktauswahl kann Fehldimensionierung und schlecht abgestimmte Komponenten vermeiden.",
     "sections": [
