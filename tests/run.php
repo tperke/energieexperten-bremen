@@ -67,7 +67,11 @@ check($config['mail']['host'] === 'smtp.ionos.de', 'IONOS SMTP-Server ist konfig
 check($config['mail']['port'] === 465 && $config['mail']['encryption'] === 'ssl', 'SMTP nutzt SSL auf Port 465');
 check($config['mail']['auto_tls'] === true && $config['mail']['authentication'] === true, 'Auto TLS und SMTP-Authentifizierung sind aktiviert');
 check($config['mail']['recipient'] === 'info@energieexperten-bremen.de', 'Formularziel ist korrekt konfiguriert');
-check(mail_is_configured() === false, 'Passwort-Platzhalter verhindert unbeabsichtigten SMTP-Versand');
+if ($config['mail']['enabled']) {
+    check(mail_is_configured(), 'Aktivierter SMTP-Versand ist vollständig konfiguriert');
+} else {
+    check(mail_is_configured() === false, 'Deaktivierter SMTP-Versand bleibt zuverlässig gesperrt');
+}
 
 $contrastChecks = [
     ['#17242c', '#fcfcfa', 4.5, 'Fließtext auf Seitenhintergrund'],
