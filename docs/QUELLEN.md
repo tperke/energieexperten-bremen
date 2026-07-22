@@ -8,7 +8,7 @@ Geprüft am 21. Juli 2026.
 2. BAFA, Merkblatt individueller Sanierungsfahrplan: https://www.bafa.de/SharedDocs/Downloads/DE/Energie/ebw_merkblatt_isfp_2023.html
 3. BAFA, Energieberatung für Nichtwohngebäude, Anlagen und Systeme: https://www.bafa.de/DE/Energie/Energieberatung/Nichtwohngebaeude_Anlagen_Systeme/nichtwohngebaeude_anlagen_systeme_node.html
 4. KfW, Bundesförderung für effiziente Gebäude: https://www.kfw.de/inlandsfoerderung/Bundesf%C3%B6rderung-f%C3%BCr-effiziente-Geb%C3%A4ude/
-5. Energieeffizienz Expertenliste für Förderprogramme des Bundes: https://www.energie-effizienz-experten.de/
+5. Energieeffizienz-Expertenliste für Förderprogramme des Bundes: https://www.energie-effizienz-experten.de/
 6. BMWE, Informationen zur Wärmeplanung: https://www.energiewechsel.de/KAENEF/Redaktion/DE/FAQ/Waermeplanung/faq-waermeplanung-wpg.html
 
 ## Quellen für Bremen
@@ -33,4 +33,3 @@ Geprüft am 21. Juli 2026.
 3. Status, Richtlinie und Antragsannahme des Bremer Programms Wärmeschutz im Wohngebäudebestand.
 4. Aktueller Stand der kommunalen Wärmeplanung für die konkrete Stadtgemeinde Bremen.
 5. Förderbedingungen am Tag der öffentlichen Freischaltung.
-
