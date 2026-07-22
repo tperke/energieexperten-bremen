@@ -7,7 +7,7 @@ $services = load_json('leistungen.json');
 $articles = array_values(array_filter(load_json('artikel.json'), static fn (array $article): bool => !empty($article['published_public'])));
 $homeFaqs = [
     ['question' => 'Wann ist eine Energieberatung sinnvoll?', 'answer' => 'Vor einem Heizungstausch, dem Kauf eines älteren Gebäudes oder mehreren Sanierungsmaßnahmen schafft eine Beratung eine fachliche Entscheidungsgrundlage.'],
-    ['question' => 'Wie finde ich einen qualifizierten Energieberater?', 'answer' => 'Prüfen Sie Erfahrung, Leistungsumfang und die für Ihr Vorhaben passende Eintragung in der Energieeffizienz Expertenliste des Bundes.'],
+    ['question' => 'Wie finde ich einen qualifizierten Energieberater?', 'answer' => 'Prüfen Sie Erfahrung, Leistungsumfang und die für Ihr Vorhaben passende Eintragung in der Energieeffizienz-Expertenliste des Bundes.'],
     ['question' => 'Welche Unterlagen sollte ich vorbereiten?', 'answer' => 'Hilfreich sind Baupläne, Flächenangaben, Verbrauchsdaten, Informationen zur Heizung und Nachweise über bereits ausgeführte Modernisierungen.'],
     ['question' => 'Werden meine Daten automatisch an Anbieter gesendet?', 'answer' => 'Nein. Derzeit erfolgt keine automatische Weitergabe. Eine Übermittlung setzt eine vorherige Information über den konkreten Empfänger und eine gesonderte Bestätigung voraus.'],
     ['question' => 'Sind Förderangaben dauerhaft gültig?', 'answer' => 'Nein. Programme und Bedingungen können sich kurzfristig ändern. Prüfen Sie vor Antrag oder Auftrag die verlinkten Originalquellen.'],
@@ -17,7 +17,7 @@ site_header('home', ['faqs' => $homeFaqs]);
 ?>
 <main id="main-content">
     <section class="home-hero">
-        <img class="hero-image" src="<?= e(site_url('assets/images/hero_bremen.webp')) ?>" srcset="<?= e(site_url('assets/images/hero_bremen_800.webp')) ?> 800w, <?= e(site_url('assets/images/hero_bremen_1200.webp')) ?> 1200w, <?= e(site_url('assets/images/hero_bremen.webp')) ?> 1600w" sizes="100vw" width="1600" height="900" alt="Illustration Bremer Wohnhäuser mit beispielhaft dargestellter energetischer Modernisierung">
+        <img class="hero-image" src="<?= e(site_url('assets/images/hero_bremen.webp')) ?>" srcset="<?= e(site_url('assets/images/hero_bremen_800.webp')) ?> 800w, <?= e(site_url('assets/images/hero_bremen_1200.webp')) ?> 1200w, <?= e(site_url('assets/images/hero_bremen.webp')) ?> 1600w" sizes="(max-width: 840px) calc(100vw - 1.5rem), (max-width: 1220px) calc(100vw - 2.5rem), 1180px" width="1600" height="900" fetchpriority="high" decoding="async" alt="Illustration Bremer Wohnhäuser mit beispielhaft dargestellter energetischer Modernisierung">
         <div class="hero-overlay"></div>
         <div class="wrap hero-content">
             <p class="eyebrow light">Orientierung für Bremen</p>
@@ -92,7 +92,7 @@ site_header('home', ['faqs' => $homeFaqs]);
             <div>
                 <p class="eyebrow">Sorgfältig auswählen</p>
                 <h2 id="qualification-heading">Ein Listeneintrag muss zum Förderweg passen</h2>
-                <p>Die Energieeffizienz Expertenliste umfasst unterschiedliche Kategorien. Prüfen Sie, ob die Fachperson genau für Wohngebäude, Nichtwohngebäude, Denkmale oder das vorgesehene Förderprogramm eingetragen ist.</p>
+                <p>Die Energieeffizienz-Expertenliste umfasst unterschiedliche Kategorien. Prüfen Sie, ob die Fachperson genau für Wohngebäude, Nichtwohngebäude, Denkmale oder das vorgesehene Förderprogramm eingetragen ist.</p>
                 <ul class="check-list"><li>Qualifikationsnachweise</li><li>Erfahrung mit vergleichbaren Gebäuden</li><li>Transparenter Leistungsumfang</li><li>Offengelegte wirtschaftliche Interessen</li></ul>
                 <a class="button secondary" href="<?= e(site_url('energieberater-bremen/')) ?>">Auswahlkriterien ansehen</a>
             </div>
