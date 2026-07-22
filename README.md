@@ -2,7 +2,7 @@
 
 Vollständiges PHP Projekt für ein regionales Informationsportal zu Energieberatung, energetischer Sanierung und qualifizierten Energieexperten in Bremen.
 
-Die Projektfassung ist technisch funktionsfähig, aber noch nicht zur öffentlichen Veröffentlichung freigegeben. Betreiberangaben, Hosting, E Mail Dienst, verbindliche Speicherfristen, rechtliche Prüfung und echte Anbieterprofile fehlen bewusst und werden nicht erfunden.
+Die Projektfassung ist für den Betrieb unter `https://energieexperten-bremen.de` konfiguriert. Echte Anbieterprofile werden weiterhin erst nach dokumentierter Prüfung veröffentlicht.
 
 ## Architektur
 
@@ -71,9 +71,10 @@ Die zusätzliche Datei `includes/content.php` bündelt redaktionelle Leistungsse
 3. PHP 8.2 oder neuer aktivieren.
 4. Apache Rewrite Regeln und die erforderlichen Module aktivieren.
 5. HTTPS einrichten und sämtliche Aufrufe auf `https://energieexperten-bremen.de` leiten.
-6. Die Werte aus `.env.example` als geschützte Servervariablen einrichten. Die Datei selbst darf nicht mit Zugangsdaten veröffentlicht werden.
+6. Die Werte aus `.env.example` als geschützte Servervariablen einrichten. Die Datei selbst darf nicht mit Zugangsdaten veröffentlicht werden. `SITE_BASE_URL` bleibt `https://energieexperten-bremen.de`.
 7. Schreibrecht für `storage/logs/` restriktiv vergeben. Empfohlen ist ein Verzeichnis außerhalb des öffentlichen Webstamms und eine Anpassung des Pfades in `includes/bootstrap.php`.
-8. Erst nach erfolgreicher rechtlicher und technischer Prüfung `MAIL_ENABLED=true` setzen.
+8. `PUBLIC_LAUNCH_READY=true` erst nach erfolgreicher Inhalts-, SSL- und Funktionserprobung setzen. Für eine erneute Vorschau kann der Wert vorübergehend auf `false` gestellt werden.
+9. Erst nach Einsetzen des echten SMTP-Passworts `MAIL_ENABLED=true` setzen.
 
 ## Lokale Prüfung
 
@@ -89,10 +90,11 @@ Saubere Adressen müssen zusätzlich auf einem Apache Testsystem geprüft werden
 ## Domain und HTTPS
 
 1. DNS Einträge auf den vorgesehenen Webserver richten.
-2. Zertifikat für die bevorzugte Domain und gegebenenfalls die Variante mit `www` ausstellen.
-3. Die bevorzugte Domain bleibt ohne `www`.
-4. Nach erfolgreicher HTTPS Prüfung kann HSTS dauerhaft aktiv bleiben.
-5. Weiterleitungen mit einem Prüfdienst auf Schleifen und falsche Statuscodes testen.
+2. Zertifikat für `energieexperten-bremen.de` und `www.energieexperten-bremen.de` ausstellen.
+3. Die bevorzugte Domain bleibt `https://energieexperten-bremen.de` ohne `www`; `.htaccess` leitet HTTP und www dauerhaft dorthin um.
+4. Die Domain muss direkt auf das öffentliche Stammverzeichnis dieses Projekts zeigen, nicht auf ein zusätzliches Unterverzeichnis.
+5. Nach erfolgreicher HTTPS Prüfung kann HSTS dauerhaft aktiv bleiben.
+6. Weiterleitungen mit einem Prüfdienst auf Schleifen und falsche Statuscodes testen.
 
 ## Betreiberangaben
 
@@ -110,7 +112,7 @@ Alle unbekannten Angaben liegen zentral in `includes/config.php` und werden bevo
 
 ## Formularversand
 
-Die Projektfassung verwendet die serverseitige PHP Funktion `mail()`. Für einen zuverlässigen Produktivbetrieb sollte entweder ein korrekt eingerichteter Mail Transfer Agent vorhanden sein oder eine geprüfte Versandkomponente mit Zugangsdaten außerhalb des Repositories integriert werden.
+Die Projektfassung versendet Formularnachrichten direkt per authentifiziertem SMTP über IONOS. Das echte Passwort muss ausschließlich als geschützte Servervariable gesetzt werden und darf nicht in das Repository gelangen.
 
 Vor Aktivierung:
 
@@ -164,9 +166,9 @@ Zeitabhängige Aussagen müssen anhand der in `includes/config.php` hinterlegten
 
 `sitemap.php` erzeugt die XML Sitemap dynamisch aus freigegebenen Hauptseiten und veröffentlichten Beiträgen. Sie ist unter `/sitemap.xml` erreichbar. Kontakt, Formulare, Rechtstexte, Filter und nicht freigegebene Profile werden nicht aufgenommen.
 
-`robots.php` erzeugt die Datei `/robots.txt` abhängig von der Umgebung. Auf der Vorschau bleibt die gesamte Installation für Suchmaschinen gesperrt. Auf der Live-Domain wird die freigegebene Sitemap genannt. Die statische `robots.txt` ist nur ein sperrender Sicherheitsfallback, falls die Apache-Umschreibung nicht aktiv ist.
+`robots.php` erzeugt die Datei `/robots.txt` abhängig von `PUBLIC_LAUNCH_READY`. Bei gesperrter Veröffentlichung bleibt die gesamte Installation für Suchmaschinen blockiert. Bei Freigabe wird die Sitemap der Hauptdomain genannt. Die statische `robots.txt` ist nur ein sperrender Sicherheitsfallback, falls die Apache-Umschreibung nicht aktiv ist.
 
-Für die Vorschau gilt `PUBLIC_LAUNCH_READY=false`. Auf der vollständig geprüften Hauptdomain `https://energieexperten-bremen.de` muss `SITE_BASE_URL` auf diese HTTPS-Adresse zeigen und `PUBLIC_LAUNCH_READY=true` ausdrücklich gesetzt werden. Ohne diesen Freigabewert bleibt jede Umgebung auf `noindex`.
+Für den Livebetrieb gelten `SITE_BASE_URL=https://energieexperten-bremen.de` und die ausdrücklich gesetzte Servervariable `PUBLIC_LAUNCH_READY=true`. Ohne diesen Serverwert bleiben HTML-Seiten und die dynamische robots.txt aus Sicherheitsgründen vollständig für die Indexierung gesperrt.
 
 ## Google Search Console
 
