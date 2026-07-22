@@ -70,6 +70,7 @@ function render_standard_page(string $pageKey): void
             <h2>Ihr Vorhaben einordnen</h2>
             <p>Beschreiben Sie Gebäude, gewünschte Leistung und geplante Maßnahme. Eine Weitergabe erfolgt derzeit nicht automatisch.</p>
             <a class="button full" href="<?= e(site_url('anfrage/')) ?>">Anfrage vorbereiten</a>
+            <a class="text-link" href="<?= e(site_url('glossar/')) ?>">Fachbegriffe nachschlagen</a>
         </aside>
     </div>
     <section class="final-cta">
@@ -87,4 +88,3 @@ function render_standard_page(string $pageKey): void
 <?php
     site_footer();
 }
-
