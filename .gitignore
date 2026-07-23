@@ -1,5 +1,5 @@
 .env
+energieexperten-bremen-private.php
 storage/logs/*.log
 *.zip
 .DS_Store
-
