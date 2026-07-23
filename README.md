@@ -71,10 +71,28 @@ Die zusätzliche Datei `includes/content.php` bündelt redaktionelle Leistungsse
 3. PHP 8.2 oder neuer aktivieren.
 4. Apache Rewrite Regeln und die erforderlichen Module aktivieren.
 5. HTTPS einrichten und sämtliche Aufrufe auf `https://energieexperten-bremen.de` leiten.
-6. Die Werte aus `.env.example` als geschützte Servervariablen einrichten. Die Datei selbst darf nicht mit Zugangsdaten veröffentlicht werden. `SITE_BASE_URL` bleibt `https://energieexperten-bremen.de`.
+6. Die Werte aus `.env.example` als geschützte Servervariablen einrichten. Alternativ kann auf IONOS die weiter unten beschriebene private PHP Konfiguration verwendet werden. Die Datei selbst darf nicht mit Zugangsdaten veröffentlicht werden. `SITE_BASE_URL` bleibt `https://energieexperten-bremen.de`.
 7. Schreibrecht für `storage/logs/` restriktiv vergeben. Empfohlen ist ein Verzeichnis außerhalb des öffentlichen Webstamms und eine Anpassung des Pfades in `includes/bootstrap.php`.
 8. Die Produktionsfassung verwendet `PUBLIC_LAUNCH_READY=true`. Für Wartung oder eine erneute Vorschau kann der Serverwert vorübergehend auf `false` gestellt werden.
-9. Erst nach Einsetzen des echten SMTP-Passworts `MAIL_ENABLED=true` setzen.
+9. Erst nach sicherer Hinterlegung des echten SMTP Passworts `MAIL_ENABLED=true` setzen.
+
+### Private Konfiguration auf IONOS
+
+Wenn keine Servervariablen eingerichtet werden können, liest `includes/config.php` eine private Datei namens `energieexperten-bremen-private.php` aus dem übergeordneten Verzeichnis des öffentlichen Domainordners. Bei der hier vorgesehenen IONOS Struktur liegt die Website im Ordner `/energieexperten-bremen`. Die private Datei wird deshalb direkt unter `/energieexperten-bremen-private.php` abgelegt und nicht in den Domainordner oder das Repository kopiert.
+
+Der Inhalt der privaten Datei lautet:
+
+```php
+<?php
+
+return [
+    'MAIL_ENABLED' => 'true',
+    'SMTP_PASSWORD' => 'HIER_DAS_NEUE_IONOS_PASSWORT_EINTRAGEN',
+    'RATE_LIMIT_SALT' => 'HIER_EINEN_LANGEN_ZUFAELLIGEN_WERT_EINTRAGEN',
+];
+```
+
+Die Datei soll die Berechtigung `0600` erhalten, sofern das IONOS Dateisystem dies unterstützt. Das bisher verwendete E Mail Passwort muss nach einer Veröffentlichung in einem öffentlichen Repository bei IONOS geändert werden. Erst das neue Passwort darf in die private Datei eingetragen werden.
 
 ## Lokale Prüfung
 
