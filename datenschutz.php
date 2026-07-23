@@ -43,8 +43,9 @@ render_breadcrumbs($breadcrumbs);
         <h2>10. Speicherdauer</h2>
         <p>Kontakt-, Beratungs- und Anbieteranfragen werden grundsätzlich spätestens sechs Monate nach Abschluss der Bearbeitung gelöscht. Eine längere Speicherung erfolgt nur, wenn sie für ein Vertragsverhältnis, die Geltendmachung oder Abwehr von Ansprüchen oder gesetzliche Aufbewahrungspflichten erforderlich ist. Sitzungscookies enden mit der Browsersitzung, die Begrenzung wiederholter Formularanfragen wirkt für eine Stunde und IONOS speichert die genannten Besucherdaten nach eigenen Angaben acht Wochen. Gesetzlich aufbewahrungspflichtige Geschäftsunterlagen werden für die jeweils vorgeschriebene Dauer gespeichert.</p>
 
-        <h2>11. Keine Analyse, Werbung oder externen Medien</h2>
-        <p>Wir verwenden keine Webanalyse, Werbepixel, extern geladenen Schriftarten, Karten, eingebetteten Videos, Social-Media-Plugins oder Marketingcookies. Die Website nutzt weder Local Storage noch Session Storage.</p>
+        <h2>11. IONOS WebAnalytics und keine externen Marketingdienste</h2>
+        <p>IONOS wertet im Rahmen des Webhostings anonymisierte Nutzungsdaten über IONOS WebAnalytics aus. Die Erhebung erfolgt nach Angaben von IONOS über Serverprotokolle oder einen Zählpixel und ohne Cookies. Die IP-Adresse wird unmittelbar nach der Übermittlung anonymisiert. Die Auswertung dient der Statistik und der technischen Optimierung der Website. Rechtsgrundlage ist Art. 6 Abs. 1 Buchst. f DSGVO. Unser berechtigtes Interesse liegt in der Optimierung und im sicheren Betrieb der Website.</p>
+        <p>Wir verwenden keine zusätzlichen externen Analysedienste, Werbepixel, extern geladenen Schriftarten, Karten, eingebetteten Videos, Social-Media-Plugins oder Marketingcookies. Die Website nutzt weder Local Storage noch Session Storage.</p>
 
         <h2>12. Ihre Rechte</h2>
         <p>Sie haben nach Maßgabe der gesetzlichen Voraussetzungen das Recht auf Auskunft (Art. 15 DSGVO), Berichtigung (Art. 16 DSGVO), Löschung (Art. 17 DSGVO), Einschränkung der Verarbeitung (Art. 18 DSGVO) und Datenübertragbarkeit (Art. 20 DSGVO). Erteilte Einwilligungen können Sie jederzeit mit Wirkung für die Zukunft widerrufen.</p>
@@ -55,7 +56,7 @@ render_breadcrumbs($breadcrumbs);
         <p>Die als Pflichtfelder gekennzeichneten Angaben benötigen wir zur Bearbeitung Ihrer Anfrage. Ohne diese Angaben können wir das Formularanliegen nicht bearbeiten. Eine gesetzliche Pflicht zur Bereitstellung besteht nicht. Es finden keine automatisierte Entscheidungsfindung und kein Profiling im Sinne von Art. 22 DSGVO statt.</p>
 
         <h2>14. Stand</h2>
-        <p>Stand: 22. Juli 2026. Wir passen diese Datenschutzerklärung an, wenn sich die Website, die eingesetzten Dienste oder die Rechtslage ändern.</p>
+        <p>Stand: 23. Juli 2026. Wir passen diese Datenschutzerklärung an, wenn sich die Website, die eingesetzten Dienste oder die Rechtslage ändern.</p>
     </div></section>
 </main>
 <?php site_footer(); ?>
