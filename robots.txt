@@ -3,7 +3,6 @@ Allow: /
 Disallow: /includes/
 Disallow: /data/
 Disallow: /storage/
-Disallow: /*?*
 
 Sitemap: https://energieexperten-bremen.de/sitemap.xml
 
