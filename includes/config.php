@@ -7,10 +7,30 @@ declare(strict_types=1);
  * Alle mit REPLACE_BEFORE_LAUNCH markierten Werte müssen vor Veröffentlichung ergänzt werden.
  */
 
+$privateConfig = [];
+$privateConfigPath = dirname(__DIR__, 2) . DIRECTORY_SEPARATOR . 'energieexperten-bremen-private.php';
+
+if (is_readable($privateConfigPath)) {
+    $loadedPrivateConfig = require $privateConfigPath;
+    if (is_array($loadedPrivateConfig)) {
+        $privateConfig = $loadedPrivateConfig;
+    }
+}
+
 function env_value(string $key, ?string $default = null): ?string
 {
     $value = getenv($key);
-    return $value === false || $value === '' ? $default : $value;
+    if ($value !== false && $value !== '') {
+        return $value;
+    }
+
+    global $privateConfig;
+    $privateValue = $privateConfig[$key] ?? null;
+    if (is_scalar($privateValue) && (string) $privateValue !== '') {
+        return (string) $privateValue;
+    }
+
+    return $default;
 }
 
 function request_host(): string
@@ -64,7 +84,7 @@ $config = [
         'mail_location' => env_value('MAIL_LOCATION', 'Deutschland und Europäische Union'),
     ],
     'mail' => [
-        'enabled' => true,
+        'enabled' => filter_var(env_value('MAIL_ENABLED', 'false'), FILTER_VALIDATE_BOOLEAN),
         'transport' => 'smtp',
         'recipient' => env_value('MAIL_RECIPIENT', 'info@energieexperten-bremen.de'),
         'from' => env_value('MAIL_FROM', 'info@energieexperten-bremen.de'),
@@ -74,12 +94,12 @@ $config = [
         'auto_tls' => filter_var(env_value('SMTP_AUTO_TLS', 'true'), FILTER_VALIDATE_BOOLEAN),
         'authentication' => filter_var(env_value('SMTP_AUTHENTICATION', 'true'), FILTER_VALIDATE_BOOLEAN),
         'username' => env_value('SMTP_USERNAME', 'info@energieexperten-bremen.de'),
-        'password' => env_value('SMTP_PASSWORD', 'HIER_DAS_E-MAIL-PASSWORT_HINTERLEGEN'),
+        'password' => env_value('SMTP_PASSWORD', ''),
         'timeout_seconds' => 15,
     ],
     'forms' => [
         'minimum_seconds' => 4,
-        'maximum_requests' => 400,
+        'maximum_requests' => 4,
         'window_seconds' => 3600,
         'rate_limit_salt' => env_value('RATE_LIMIT_SALT', 'energieexperten-bremen-local-salt'),
         'forwarding_enabled' => false,
