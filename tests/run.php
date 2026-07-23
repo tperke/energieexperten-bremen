@@ -111,7 +111,7 @@ foreach ($config['sources'] as $key => $source) {
     check((bool) preg_match('/^\d{2}\.\d{2}\.\d{4}$/', $source['checked']), 'Quelle besitzt Prüfdatum: ' . $key);
 }
 
-$requiredFiles = ['index.php', 'glossar.php', 'robots.php', '.htaccess', 'robots.txt', 'sitemap.php', 'assets/css/style.css', 'assets/js/main.js', 'assets/images/logo.svg', 'assets/images/favicon.svg', 'assets/images/hero_bremen.webp', 'assets/images/og_image_modern.webp', 'README.md'];
+$requiredFiles = ['index.php', 'glossar.php', 'robots.php', '.htaccess', 'robots.txt', 'sitemap.php', 'favicon.ico', 'assets/css/style.css', 'assets/js/main.js', 'assets/images/logo.svg', 'assets/images/favicon.svg', 'assets/images/favicon-96.png', 'assets/images/apple-touch-icon.png', 'assets/images/hero_bremen.webp', 'assets/images/og_image_modern.webp', 'README.md'];
 foreach ($requiredFiles as $file) {
     check(is_file($root . '/' . $file) && filesize($root . '/' . $file) > 0, 'Erforderliche Datei vorhanden: ' . $file);
 }
@@ -130,6 +130,8 @@ check(str_contains($robotsFallback, 'Sitemap: https://energieexperten-bremen.de/
 $headerSource = (string) file_get_contents($root . '/includes/header.php');
 check(str_contains($headerSource, 'index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1'), 'Öffentliche Seiten verwenden freigebende Meta-Robots-Signale');
 check(str_contains($headerSource, '<link rel="canonical"'), 'Öffentliche Seiten geben eine kanonische Adresse aus');
+check(str_contains($headerSource, "site_url('assets/images/favicon-96.png')") && str_contains($headerSource, 'sizes="96x96"'), 'Google-taugliches PNG-Favicon ist im Seitenkopf verknüpft');
+check(str_contains($headerSource, "site_url('favicon.ico')"), 'Klassisches Root-Favicon ist im Seitenkopf verknüpft');
 
 if ($failures !== []) {
     echo "\n" . count($failures) . " Prüfung oder Prüfungen fehlgeschlagen.\n";

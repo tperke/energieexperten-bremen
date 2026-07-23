@@ -51,7 +51,9 @@ function site_header(string $pageKey, array $options = []): void
     <meta name="twitter:image" content="<?= e(site_url('assets/images/og_image_modern.webp')) ?>">
     <meta name="twitter:image:alt" content="Energieexperten Bremen: Orientierung für Energieberatung und Sanierung">
     <meta name="theme-color" content="#123247">
-    <link rel="icon" href="<?= e(site_url('assets/images/favicon.svg')) ?>" type="image/svg+xml">
+    <link rel="icon" href="<?= e(site_url('assets/images/favicon-96.png')) ?>" type="image/png" sizes="96x96">
+    <link rel="shortcut icon" href="<?= e(site_url('favicon.ico')) ?>">
+    <link rel="apple-touch-icon" href="<?= e(site_url('assets/images/apple-touch-icon.png')) ?>" sizes="180x180">
     <?php if ($pageKey === 'home'): ?>
         <link rel="preload" as="image" href="<?= e(site_url('assets/images/hero_bremen_modern_1200.webp')) ?>" imagesrcset="<?= e(site_url('assets/images/hero_bremen_modern_800.webp')) ?> 800w, <?= e(site_url('assets/images/hero_bremen_modern_1200.webp')) ?> 1200w, <?= e(site_url('assets/images/hero_bremen_modern.webp')) ?> 1672w" imagesizes="100vw" fetchpriority="high">
     <?php endif; ?>

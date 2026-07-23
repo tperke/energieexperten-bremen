@@ -6,6 +6,7 @@
 | `hero_bremen.webp` | Frühere redaktionelle Hero-Illustration typischer Bremer Reihenhäuser | Illustration Bremer Wohnhäuser mit beispielhaft dargestellter energetischer Modernisierung | 16 zu 9 | Nicht mehr aktiv eingebunden | Archivbestand |
 | `og_image_modern.webp` | Ausschnitt der neuen Hero-Illustration für soziale Vorschau | Nicht sichtbar im Seiteninhalt | 40 zu 21 | Open-Graph- und Twitter-Metadaten | Erstellt |
 | `og_image.webp` | Frühere soziale Vorschau | Nicht sichtbar im Seiteninhalt | 40 zu 21 | Nicht mehr aktiv eingebunden | Archivbestand |
+| `favicon-96.png`, `favicon.ico`, `apple-touch-icon.png` | Vereinfachtes Haus- und Blattzeichen der Marke | Nicht sichtbar im Seiteninhalt | 1 zu 1 | Browser, Google-Suchergebnisse und Startbildschirm | Erstellt |
 | `beratung_bremen.webp` | Reales oder illustriertes Beratungsgespräch mit Planunterlagen, keine erkennbaren privaten Daten | Energieberatung mit Planunterlagen | 4 zu 3 | Energieberatung | Noch zu beschaffen |
 | `gebaeudeaufnahme.webp` | Fachperson bei sichtbarer Bestandsaufnahme an einem freigegebenen Gebäude | Fachliche Aufnahme eines Wohngebäudes | 4 zu 3 | Auswahl und Baubegleitung | Noch zu beschaffen |
 | `heizung_bestand.webp` | Heizungsanlage mit sicherem, aufgeräumtem Technikraum | Fachliche Prüfung einer Heizungsanlage | 4 zu 3 | Ratgeber Heizung | Noch zu beschaffen |

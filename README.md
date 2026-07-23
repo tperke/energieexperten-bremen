@@ -136,10 +136,11 @@ Vor Aktivierung:
 1. Hero Illustration unter `assets/images/hero_bremen.webp` ersetzen.
 2. Die beiden kleineren Varianten `hero_bremen_800.webp` und `hero_bremen_1200.webp` passend neu erzeugen.
 3. Open Graph Bild unter `assets/images/og_image_modern.webp` ersetzen.
-4. Abmessungen und Seitenverhältnis beibehalten oder HTML Angaben anpassen.
-5. Nur eigene, lizenzierte oder dokumentiert freigegebene Bilder verwenden.
-6. Alternativtext an den tatsächlichen Bildinhalt anpassen.
-7. Bildplan in `docs/BILDPLAN.md` beachten.
+4. Für Suchergebnisse wird `assets/images/favicon-96.png` verwendet; `favicon.ico` dient als klassischer Root-Fallback.
+5. Abmessungen und Seitenverhältnis beibehalten oder HTML Angaben anpassen.
+6. Nur eigene, lizenzierte oder dokumentiert freigegebene Bilder verwenden.
+7. Alternativtext an den tatsächlichen Bildinhalt anpassen.
+8. Bildplan in `docs/BILDPLAN.md` beachten.
 
 ## Expertenprofile pflegen
 
