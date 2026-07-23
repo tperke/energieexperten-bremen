@@ -16,5 +16,5 @@ echo "Allow: /\n";
 echo "Disallow: /includes/\n";
 echo "Disallow: /data/\n";
 echo "Disallow: /storage/\n";
-echo "Disallow: /*?*\n\n";
+echo "\n";
 echo 'Sitemap: ' . site_url('sitemap.xml') . "\n";
